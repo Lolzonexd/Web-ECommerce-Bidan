@@ -6,10 +6,10 @@ Repo ini berisi source code untuk proyek UAS mata kuliah pemrograman web, yaitu 
 
 ## 👥 Anggota Kelompok
 
-| Nama                          | NIM / Keterangan         |
-| ----------------------------- | ------------------------ |
-| **A. Hanif Nursyabana**       | 062430701367 / Developer |
-| **Raden Fadlurahman Said F.** | 0624307013 / Developer   |
+| Nama                          | NIM          | Role               |
+| ----------------------------- | ------------ | ------------------ |
+| **A. Hanif Nursyabana**       | 062430701367 | Backend Developer  |
+| **Raden Fadlurahman Said F.** | 0624307013   | Frontend Developer |
 
 ## 🎯 Tujuan Proyek
 
