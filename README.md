@@ -37,7 +37,7 @@ Repo ini berisi source code untuk proyek UAS mata kuliah pemrograman web, yaitu 
 
 ## 📂 Struktur Proyek
 
-    ```bash
+```bash
     /project-root
     ├── public/ # file yang diakses langsung user (frontend)
     │ ├── index.php # halaman utama
@@ -74,7 +74,7 @@ Repo ini berisi source code untuk proyek UAS mata kuliah pemrograman web, yaitu 
     │ └── database.sql # file struktur database
     │
     └── README.md
-    ```
+```
 
 ---
 
