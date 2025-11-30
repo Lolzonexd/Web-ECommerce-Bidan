@@ -38,42 +38,42 @@ Repo ini berisi source code untuk proyek UAS mata kuliah pemrograman web, yaitu 
 ## 📂 Struktur Proyek
 
 ```bash
-    /project-root
-    ├── public/ # file yang diakses langsung user (frontend)
-    │ ├── index.php # halaman utama
-    │ ├── login.php # halaman login
-    │ ├── register.php # halaman register
-    │ ├── booking.php # halaman pemesanan layanan
-    │ └── services.php # daftar layanan
-    │
-    ├── admin/ # halaman backend admin/bidan
-    │ ├── index.php # dashboard admin
-    │ ├── layanan/ # CRUD layanan
-    │ ├── pasien/ # CRUD pasien
-    │ ├── booking/ # kelola pemesanan
-    │ └── auth/ # login admin, logout, dsb
-    │
-    ├── assets/ # file statis
-    │ ├── css/
-    │ ├── js/
-    │ └── images/
-    │
-    ├── config/
-    │ ├── database.php # koneksi database
-    │ └── app.php # konfigurasi global
-    │
-    ├── includes/ # komponen reusable
-    │ ├── header.php
-    │ ├── footer.php
-    │ └── navbar.php
-    │
-    ├── helpers/ # fungsi tambahan (utils)
-    │ └── auth.php # pengecekan login, cookie remember me
-    │
-    ├── sql/
-    │ └── database.sql # file struktur database
-    │
-    └── README.md
+/project-root
+├── public/ # file yang diakses langsung user (frontend)
+│ ├── index.php # halaman utama
+│ ├── login.php # halaman login
+│ ├── register.php # halaman register
+│ ├── booking.php # halaman pemesanan layanan
+│ └── services.php # daftar layanan
+│
+├── admin/ # halaman backend admin/bidan
+│ ├── index.php # dashboard admin
+│ ├── layanan/ # CRUD layanan
+│ ├── pasien/ # CRUD pasien
+│ ├── booking/ # kelola pemesanan
+│ └── auth/ # login admin, logout, dsb
+│
+├── assets/ # file statis
+│ ├── css/
+│ ├── js/
+│ └── images/
+│
+├── config/
+│ ├── database.php # koneksi database
+│ └── app.php # konfigurasi global
+│
+├── includes/ # komponen reusable
+│ ├── header.php
+│ ├── footer.php
+│ └── navbar.php
+│
+├── helpers/ # fungsi tambahan (utils)
+│ └── auth.php # pengecekan login, cookie remember me
+│
+├── sql/
+│ └── database.sql # file struktur database
+│
+└── README.md
 ```
 
 ---
