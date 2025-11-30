@@ -100,17 +100,17 @@ _(Tambahkan screenshot di sini nanti)_
 
 ## 🤝 Kontribusi
 
-Pull request dan issue sangat terbuka bagi anggota tim.
+Pull request dan issue sangat terbuka bagi anggota tim. <br>
 Pastikan setiap update dikirim melalui branch masing-masing.
 
 ## 📜 Lisensi
 
-Proyek ini dibuat untuk keperluan akademik (UAS).
+Proyek ini dibuat untuk keperluan akademik (UAS). <br>
 Tidak diperkenankan digunakan untuk tujuan komersial tanpa izin.
 
 ## ⭐ Kredit
 
-Dikembangkan oleh **Kelompok UAS Praktik Bidan**:
+Dikembangkan oleh **Kelompok UAS Praktik Bidan**: <br>
 **A. Hanif Nursyabana** & **Raden Fadlurahman Said F.**
 
 Terima kasih kepada semua teman-teman yang telah membantu dalam pembuatan proyek ini.
