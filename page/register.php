@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +15,12 @@
     <?php include '../layout/header.html'; ?>
 
     <h2>Register your account</h2>
-
+    <?php
+    if (isset($_SESSION['registration_error'])) {
+        echo '<p style="color: red;">' . $_SESSION['registration_error'] . '</p>';
+        unset($_SESSION['registration_error']);
+    }
+    ?>
     <form action="../service/prosesRegister.php" method="POST">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required><br><br>
