@@ -10,7 +10,6 @@ session_start();
     <link rel="stylesheet" href="../asset/style.css">
 </head>
 <body>
-    <?php include '../layout/header.html'; ?>
     <h2>Login your account</h2>
     
     <?php
@@ -34,6 +33,5 @@ session_start();
         <input type="submit" value="Login">
     </form>
     
-    <?php include '../layout/footer.html'; ?>
 </body>
 </html>
