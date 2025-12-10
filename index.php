@@ -3,21 +3,23 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PMB Nurhasanah</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="asset/style.css">
 </head>
+
 <body>
-<?php include 'layout/header.html'; ?> 
-<section class="hero" id="home">
+    <?php include 'layout/header.html'; ?>
+    <section class="hero" id="home">
         <div class="hero-content">
             <h1>Pendamping Setia Kehamilan & Kelahiran sang Buah Hati</h1>
             <p>Melayani dengan hati, profesional, dan mengutamakan kenyamanan ibu serta keselamatan bayi.</p>
-            <a href="https://wa.me/6281234567890" class="cta-btn" style="font-size: 1.1rem;">
+            <a href="https://wa.me/6281234567890" target="_blank" class="cta-btn" style="font-size: 1.1rem;">
                 <i class="fa-brands fa-whatsapp"></i> Konsultasi Gratis
             </a>
         </div>
@@ -75,7 +77,7 @@ session_start();
     </section>
 
     <section class="profile" id="profile">
-        <img src="foto/fotoprofile1.jpeg" alt="Bidan Ana" class="profile-img">
+        <img src="img/fotoProfile1.svg" alt="Bidan Ana" class="profile-img">
         <div class="profile-text">
             <h2>Bidan Nurhasanah, S.S.T., M.Kes.</h2>
             <div class="quote">
@@ -85,5 +87,6 @@ session_start();
         </div>
     </section>
     <?php include 'layout/footer.html'; ?>
-    </body>
+</body>
+
 </html>
