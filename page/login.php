@@ -40,11 +40,11 @@ session_start();
 
             <?php
             if (isset($_SESSION['registration_success'])) {
-                echo "<div class='alert alert-success'>" . $_SESSION['registration_success'] . "</div>";
+                echo "<div class='alert alert-success'>" . htmlspecialchars($_SESSION['registration_success']) . "</div>";
                 unset($_SESSION['registration_success']);
             }
             if (isset($_SESSION['login_error'])) {
-                echo "<div class='alert alert-error'>" . $_SESSION['login_error'] . "</div>";
+                echo "<div class='alert alert-error'>" . htmlspecialchars($_SESSION['login_error']) . "</div>";
                 unset($_SESSION['login_error']);
             }
             ?>

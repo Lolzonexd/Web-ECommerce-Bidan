@@ -40,7 +40,7 @@ session_start();
 
             <?php
             if (isset($_SESSION['registration_error'])) {
-                echo '<div class="alert alert-error">' . $_SESSION['registration_error'] . '</div>';
+                echo '<div class="alert alert-error">' . htmlspecialchars($_SESSION['registration_error']) . '</div>';
                 unset($_SESSION['registration_error']);
             }
             ?>
