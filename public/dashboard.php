@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+include '../helper/authChecker.php';
+
 ?>
 
 <!DOCTYPE html>

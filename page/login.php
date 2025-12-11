@@ -60,6 +60,11 @@ session_start();
                     <input type="password" id="password" name="password" class="form-control" placeholder="Masukkan password" required>
                 </div>
 
+                <div class="form-group">
+                    <input type="checkbox" id="remember" name="remember">Tetap Login
+                    <label for="remember">Tetap Login</label>
+                </div>
+
                 <button type="submit" class="btn-submit">Login</button>
             </form>
 
