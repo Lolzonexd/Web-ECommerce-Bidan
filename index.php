@@ -25,7 +25,7 @@ session_start();
         <div class="hero-content">
             <h1>Pendamping Setia Kehamilan & Kelahiran sang Buah Hati</h1>
             <p>Melayani dengan hati, profesional, dan mengutamakan kenyamanan ibu serta keselamatan bayi.</p>
-            <a href="https://wa.me/6281234567890" target="_blank" class="cta-btn" style="font-size: 1.1rem;">
+            <a href="https://wa.me/6285267444236" target="_blank" class="cta-btn" style="font-size: 1.1rem;">
                 <i class="fa-brands fa-whatsapp"></i> Konsultasi Gratis
             </a>
         </div>
@@ -72,15 +72,15 @@ session_start();
                 <p>Vaksinasi dasar dan lanjutan lengkap untuk perlindungan buah hati.</p>
             </div>
             <div class="service-item">
-                <h3><i class="fa-solid fa-hands-holding-child"></i> Mom & Baby Spa</h3>
+                <h3><i class="fa-solid fa-baby"></i> Mom & Baby Spa</h3>
                 <p>Pijat relaksasi ibu hamil/nifas dan stimulasi motorik bayi.</p>
             </div>
             <div class="service-item">
-                <h3><i class=""></i> Pelayanan Keluarga Berencana (KB)</h3>
+                <h3><i class="fa-solid fa-baby-carriage"></i> Pelayanan Keluarga Berencana (KB)</h3>
                 <p>TEst</p>
             </div>
             <div class="service-item">
-                <h3><i class=""></i> Pelayanan ibu Nifas</h3>
+                <h3><i class="fa-solid fa-droplet"></i> Pelayanan ibu Nifas</h3>
                 <p>Test</p>
             </div>
         </div>

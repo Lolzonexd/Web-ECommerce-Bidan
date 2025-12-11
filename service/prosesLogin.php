@@ -30,6 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Cek Password
         if (password_verify($password, $user['password'])) {
+            session_regenerate_id(true);
             $_SESSION['loggedin'] = true;
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
@@ -46,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 default:
                     $_SESSION['login_error'] = "Terjadi Kesalahan pada server, coba beberapa saat lagi: ";
-                    header("Location: ../page/index.php");
+                    header("Location: ../page/login.php");
                     exit;
             }
         } else {

@@ -4,10 +4,17 @@ include 'koneksi.php';
 
 // Cek Input dari page/register.php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = trim($_POST['username']);
-    $email = trim($_POST['email']);
+    $username = htmlspecialchars(trim($_POST['username']), ENT_QUOTES, 'UTF-8');
+    $email = htmlspecialchars(trim($_POST['email'], ENT_QUOTES, 'UTF-8'));
     $level = 'user';
     $password = $_POST['password'];
+
+    // Cek Panjang Password
+    if (strlen($password) < 8) {
+        $_SESSION['registration_error'] = "Password minimal 8 karakter.";
+        header("Location: ../page/register.php");
+        exit;
+    }
 
     // Cek Email
     $sqlEmail = "SELECT email 
@@ -26,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+
 
     $sql = "INSERT INTO user (username, email, password, level) 
             VALUES (?, ?, ?, ?)";
