@@ -12,7 +12,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box
 }
 
 body {
@@ -285,4 +285,126 @@ footer {
         text-align: center;
     }
 }
-/* --- CSS LOGIN PAGE --- */
+/* --- CSS LOGIN and REGISTER PAGE (FIXED) --- */
+
+/* Wrapper agar form ada di tengah layar */
+.auth-wrapper {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f9f4; /* Menggunakan warna background profile agar senada */
+    padding: 20px;
+    margin-top: 60px; /* Kompensasi fixed navbar */
+}
+
+/* Kotak Form Putih */
+.auth-box {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    border-top: 5px solid var(--primary); /* Aksen garis hijau di atas */
+}
+
+.auth-header h2 {
+    color: var(--primary);
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 5px;
+}
+
+.auth-header p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+}
+
+/* Style Input Form */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: 0.3s;
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-control:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(106, 156, 137, 0.2); /* Efek glow warna primary */
+}
+
+/* Tombol Submit Full Width */
+.btn-submit {
+    width: 100%;
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 12px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-submit:hover {
+    background-color: #4e7a6a; /* Warna hover agak gelap */
+    transform: translateY(-2px);
+}
+
+/* Link kecil di bawah */
+.auth-footer {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.auth-footer a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Alert Box untuk Error PHP */
+.alert {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    text-align: left;
+}
+.alert-error {
+    background-color: #fceae9;
+    color: #e64848; /* Menggunakan var(--accent) merah */
+    border: 1px solid #f5c6cb;
+}
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}

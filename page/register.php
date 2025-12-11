@@ -2,36 +2,68 @@
 session_start();
 ?>
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register page</title>
+    <title>Daftar - PMB Nurhasanah</title>
+
     <link rel="stylesheet" href="../asset/style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
-    <h2>Register your account</h2>
-    <?php
-    if (isset($_SESSION['registration_error'])) {
-        echo '<p style="color: red;">' . $_SESSION['registration_error'] . '</p>';
-        unset($_SESSION['registration_error']);
-    }
-    ?>
-    <form action="../service/prosesRegister.php" method="POST">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br><br>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
+    <header>
+        <div class="logo">
+            <i class="fas fa-heartbeat"></i> PMB Nurhasanah
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.php">Kembali ke Beranda</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
+    <div class="auth-wrapper">
+        <div class="auth-box">
+            <div class="auth-header">
+                <h2>Buat Akun Baru</h2>
+                <p>Bergabunglah dengan layanan kami</p>
+            </div>
 
-        <input type="submit" name="register" value="Register">
-    </form>
-    <p>Sudah punya akun?</p>
-    <a href="login.php">Login di sini</a>
+            <?php
+            if (isset($_SESSION['registration_error'])) {
+                echo '<div class="alert alert-error">' . $_SESSION['registration_error'] . '</div>';
+                unset($_SESSION['registration_error']);
+            }
+            ?>
+
+            <form action="../service/prosesRegister.php" method="POST">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" class="form-control" placeholder="Pilih username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="contoh@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Minimal 8 karakter" required>
+                </div>
+
+                <button type="submit" name="register" class="btn-submit">Register</button>
+            </form>
+
+            <div class="auth-footer">
+                Sudah punya akun? <a href="login.php">Login di sini</a>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
