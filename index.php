@@ -72,15 +72,15 @@ session_start();
                 <p>Vaksinasi dasar dan lanjutan lengkap untuk perlindungan buah hati.</p>
             </div>
             <div class="service-item">
-                <h3><i class="fa-solid fa-hands-holding-child"></i> Mom & Baby Spa</h3>
+                <h3><i class="fa-solid fa-baby"></i> Mom & Baby Spa</h3>
                 <p>Pijat relaksasi ibu hamil/nifas dan stimulasi motorik bayi.</p>
             </div>
             <div class="service-item">
-                <h3><i class=""></i> Pelayanan Keluarga Berencana (KB)</h3>
+                <h3><i class="fa-solid fa-baby-carriage"></i> Pelayanan Keluarga Berencana (KB)</h3>
                 <p>TEst</p>
             </div>
             <div class="service-item">
-                <h3><i class=""></i> Pelayanan ibu Nifas</h3>
+                <h3><i class="fa-solid fa-droplet"></i> Pelayanan ibu Nifas</h3>
                 <p>Test</p>
             </div>
         </div>
