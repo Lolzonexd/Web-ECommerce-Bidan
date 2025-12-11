@@ -32,6 +32,7 @@ session_start();
 
         <input type="submit" value="Login">
     </form>
-    
+    <p>Belum punya akun?</p>
+    <a href="register.php">Daftar di sini</a> 
 </body>
 </html>

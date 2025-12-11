@@ -12,8 +12,6 @@ session_start();
 </head>
 
 <body>
-    <?php include '../layout/header.html'; ?>
-
     <h2>Register your account</h2>
     <?php
     if (isset($_SESSION['registration_error'])) {
@@ -33,8 +31,7 @@ session_start();
 
         <input type="submit" name="register" value="Register">
     </form>
-
-    <?php include '../layout/footer.html'; ?>
+    <p>Sudah punya akun?</p>
+    <a href="login.php">Login di sini</a>
 </body>
-
 </html>
