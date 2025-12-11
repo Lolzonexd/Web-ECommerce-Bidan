@@ -8,13 +8,19 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PMB Nurhasanah</title>
+    <!-- POPPINS FONT -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <!-- AWESOME FONT -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- CSS -->
     <link rel="stylesheet" href="asset/style.css">
 </head>
 
 <body>
+    <!-- NAVBAR -->
     <?php include 'layout/header.html'; ?>
+
+    <!-- HERO -->
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>Pendamping Setia Kehamilan & Kelahiran sang Buah Hati</h1>
@@ -24,7 +30,9 @@ session_start();
             </a>
         </div>
     </section>
+    <!-- END HERO -->
 
+    <!-- FEATURES -->
     <section class="features">
         <div class="feature-card">
             <i class="fa-solid fa-user-nurse"></i>
@@ -42,7 +50,9 @@ session_start();
             <p>Layanan gawat darurat dan persalinan kapan saja.</p>
         </div>
     </section>
+    <!-- END FEATURES -->
 
+    <!-- SERVICES -->
     <section class="services" id="services">
         <div class="section-title">
             <h2>Layanan Kami</h2>
@@ -75,7 +85,9 @@ session_start();
             </div>
         </div>
     </section>
+    <!-- END SERVICES -->
 
+    <!-- PROFILE -->
     <section class="profile" id="profile">
         <img src="img/fotoProfile1.svg" alt="Bidan Ana" class="profile-img">
         <div class="profile-text">
@@ -86,6 +98,9 @@ session_start();
             <p>LOREM IPSUM</p>
         </div>
     </section>
+    <!-- END PROFILE -->
+
+    <!-- FOOTER -->
     <?php include 'layout/footer.html'; ?>
 </body>
 
