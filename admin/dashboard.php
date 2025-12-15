@@ -19,7 +19,7 @@ session_start();
     <?php
     if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
         echo "<p>Anda masuk sebagai: <b>" . htmlspecialchars($_SESSION['username']) . "</b> (Level: " . htmlspecialchars($_SESSION['level']) . ")</p>";
-        echo "<p><a href='service/logout.php'>Logout</a></p>";
+        echo "<p><a href='../service/logout.php'>Logout</a></p>";
     } else {
         echo "<p>Silakan <a href='page/login.php'>Login</a> atau <a href='page/register.php'>Register</a>.</p>";
     }
