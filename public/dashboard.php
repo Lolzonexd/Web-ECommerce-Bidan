@@ -1,16 +1,16 @@
 <?php
 session_start();
-
+include '../helper/authChecker.php';
 ?>
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard User - PMB Nurhasanah</title>
-    
-    <link rel="stylesheet" href="../asset/style.css"> 
+    <link rel="stylesheet" href="../asset/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -32,7 +32,7 @@ session_start();
     </nav>
 
     <div class="dashboard-container">
-        
+
         <div class="welcome-banner">
             <h2>Selamat Datang, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
             <p>Anda telah berhasil login ke Sistem Pelayanan Bidan. Silakan pilih menu di bawah ini untuk melanjutkan.</p>
@@ -40,9 +40,9 @@ session_start();
 
         <div class="menu-section">
             <h3>Menu Navigasi</h3>
-            
+
             <div class="menu-grid">
-                
+
                 <div class="menu-card">
                     <div>
                         <h4>Buat Janji Baru</h4>
@@ -82,4 +82,5 @@ session_start();
 
     <?php include '../layout/footer.html'; ?>
 </body>
+
 </html>

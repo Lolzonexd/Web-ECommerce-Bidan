@@ -30,6 +30,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Cek Password
         if (password_verify($password, $user['password'])) {
+
+            // Cek Tetap Login
+            if (!empty($_POST['remember'])) {
+                $token = bin2hex(random_bytes(32));
+                $hashedToken = hash('sha256', $token);
+
+                // 30 hari
+                $expire = date('Y-m-d H:i:s', time() + 60 * 60 * 24 * 30);
+
+                $sqlToken = "UPDATE user 
+                            SET remember_token = ?, remember_expire = ? 
+                            WHERE id = ?";
+
+                $stmtToken = $conn->prepare($sqlToken);
+                $stmtToken->bind_param("ssi", $hashedToken, $expire, $user['id']);
+                $stmtToken->execute();
+
+                setcookie(
+                    "remember_me",
+                    $token,
+                    [
+                        "expires" => time() + 60 * 60 * 24 * 30,
+                        "path" => "/",
+                        "secure" => true,        // HTTPS wajib
+                        "httponly" => true,      // cegah JS akses
+                        "samesite" => "Strict",  // cegah CSRF
+                    ]
+                );
+            }
+
             session_regenerate_id(true);
             $_SESSION['loggedin'] = true;
             $_SESSION['user_id'] = $user['id'];
