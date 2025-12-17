@@ -60,6 +60,14 @@ session_start();
                     <input type="password" id="password" name="password" class="form-control" placeholder="Masukkan password" required>
                 </div>
 
+                <div class="remember-me-wrap">
+                    <label class="custom-checkbox">
+                        Ingat Saya
+                        <input type="checkbox" name="remember" id="remember">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+
                 <button type="submit" class="btn-submit">Login</button>
             </form>
 
