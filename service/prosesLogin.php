@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             switch ($user['level']) {
                 case 'admin':
-                    header("Location: ../admin/dashboard.php");
+                    header("Location: ../admin/dashboard_admin.php");
                     exit;
 
                 case 'user':

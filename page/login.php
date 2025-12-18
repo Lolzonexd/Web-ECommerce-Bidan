@@ -63,7 +63,7 @@ session_start();
 
                 <div class="remember-me-wrap">
                     <label class="custom-checkbox">
-                        Ingat Saya
+                        <b>Ingat Saya</b>
                         <input type="checkbox" name="remember" id="remember">
                         <span class="checkmark"></span>
                     </label>

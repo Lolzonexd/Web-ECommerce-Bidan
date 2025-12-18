@@ -647,3 +647,56 @@ footer {
         display: none; /* Sembunyikan sapaan teks di HP agar muat */
     }
 }
+/* --- STYLE TABEL MODERN (CLEAN) --- */
+
+/* 1. Kotak Putih Pembungkus */
+.card-box {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Bayangan halus */
+    margin-bottom: 30px;
+}
+
+.card-title {
+    margin-bottom: 20px;
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+/* 2. Tabel Rapi (Garis Halus) */
+.table-responsive {
+    overflow-x: auto;
+    width: 100%;
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    border: none; /* Hapus garis pinggir tebal */
+}
+
+.custom-table th, 
+.custom-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee; /* Hanya garis pemisah bawah warna abu tipis */
+    color: #555;
+}
+
+/* Header Tabel */
+.custom-table th {
+    background-color: var(--primary);
+    color: white;
+    font-weight: 600;
+    border: none; /* Header tanpa garis kotak */
+}
+
+/* Efek Hover */
+.custom-table tr:hover {
+    background-color: #f9f9f9;
+}
