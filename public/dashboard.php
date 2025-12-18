@@ -12,13 +12,14 @@ include '../helper/authChecker.php';
     <title>Dashboard User - PMB Nurhasanah</title>
     <link rel="stylesheet" href="../asset/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">\
+    <link rel="icon" type="favicon" href="../favicon.ico">
 </head>
 
 <body>
     <nav class="navbar-dashboard">
         <a href="dashboard.php" class="brand">
-            <i class="fas fa-heartbeat"></i> PMB Kasih Bunda
+            <i class="fas fa-heartbeat"></i> PMB Kasih Nurhasanah
         </a>
 
         <div class="nav-right">
