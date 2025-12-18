@@ -19,7 +19,7 @@ include '../helper/authChecker.php';
 <body>
     <nav class="navbar-dashboard">
         <a href="dashboard.php" class="brand">
-            <i class="fas fa-heartbeat"></i> PMB Kasih Nurhasanah
+            <i class="fas fa-heartbeat"></i> PMB Nurhasanah
         </a>
 
         <div class="nav-right">
