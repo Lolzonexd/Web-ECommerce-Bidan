@@ -5,7 +5,7 @@ include 'koneksi.php';
 // Cek Input dari page/register.php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = htmlspecialchars(trim($_POST['username']), ENT_QUOTES, 'UTF-8');
-    $email = htmlspecialchars(trim($_POST['email'], ENT_QUOTES, 'UTF-8'));
+    $email = htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8');
     $level = 'user';
     $password = $_POST['password'];
 

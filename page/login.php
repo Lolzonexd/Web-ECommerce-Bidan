@@ -14,6 +14,7 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- CSS -->
     <link rel="stylesheet" href="../asset/style.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -62,7 +63,7 @@ session_start();
 
                 <div class="remember-me-wrap">
                     <label class="custom-checkbox">
-                        Ingat Saya
+                        <b>Ingat Saya</b>
                         <input type="checkbox" name="remember" id="remember">
                         <span class="checkmark"></span>
                     </label>
