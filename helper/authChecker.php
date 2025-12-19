@@ -16,13 +16,13 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     $current = basename($_SERVER['PHP_SELF']);
 
     if ($_SESSION['level'] === 'admin') {
-        if ($current !== 'dashboard.php') {
-            header("Location: ../admin/dashboard.php");
+        if ($current !== 'dashboardAdmin.php') {
+            header("Location: ../admin/dashboardAdmin.php");
             exit;
         }
     } else {
-        if ($current !== 'dashboard.php') {
-            header("Location: ../public/dashboard.php");
+        if ($current !== 'dashboardUser.php') {
+            header("Location: ../public/dashboardUser.php");
             exit;
         }
     }

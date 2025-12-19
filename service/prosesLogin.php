@@ -68,11 +68,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             switch ($user['level']) {
                 case 'admin':
-                    header("Location: ../admin/dashboard_admin.php");
+                    header("Location: ../admin/dashboardAdmin.php");
                     exit;
 
                 case 'user':
-                    header("Location: ../public/dashboard.php");
+                    header("Location: ../public/dashboardUser.php");
                     exit;
 
                 default:

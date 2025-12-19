@@ -28,7 +28,7 @@ $resultLayanan = $conn->query($queryLayanan);
         </a>
         <div class="nav-right">
             <span class="user-greeting">Halo, <b><?php echo htmlspecialchars($_SESSION['username']); ?></b></span>
-            <a href="dashboard.php" class="btn-logout-nav" style="background:transparent; border:1px solid white;">Kembali</a>
+            <a href="dashboardUser.php" class="btn-logout-nav" style="background:transparent; border:1px solid white;">Kembali</a>
         </div>
     </nav>
 

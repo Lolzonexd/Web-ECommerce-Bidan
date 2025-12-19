@@ -89,7 +89,7 @@ $result = $conn->query($sql);
 <body>
 
     <nav class="navbar-dashboard">
-        <a href="dashboard.php" class="brand">
+        <a href="dashboardUser.php" class="brand">
             <i class="fas fa-heartbeat"></i> PMB Nurhasanah
         </a>
         <div class="nav-right">
