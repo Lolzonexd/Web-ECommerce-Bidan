@@ -14,16 +14,18 @@ $queryLayanan = $conn->query("SELECT * FROM layanan WHERE aktif=1");
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <title>Dashboard Admin - PMB Nurhasanah</title>
-    <link rel="stylesheet" href="../asset/style.css"> 
+    <link rel="stylesheet" href="../asset/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 </head>
 
 <body>
-    
+
     <nav class="navbar-dashboard">
         <a href="dashboard_admin.php" class="brand"><i class="fas fa-user-nurse"></i> Mode Atmin</a>
         <div class="nav-right">
@@ -33,14 +35,14 @@ $queryLayanan = $conn->query("SELECT * FROM layanan WHERE aktif=1");
     </nav>
 
     <div class="dashboard-container">
-        
+
         <div class="welcome-banner" style="border-left-color: #e64848;">
             <h2>Selamat Datang, Administrator!</h2>
             <p>Pilih kategori layanan di bawah ini untuk mengelola data pasien/janji temu.</p>
         </div>
 
         <div class="menu-section">
-            
+
             <h3 style="margin-top:0;">Master Data</h3>
             <div class="menu-grid" style="margin-bottom: 40px;">
                 <div class="menu-card" style="border-left: 5px solid #333;">
@@ -50,7 +52,7 @@ $queryLayanan = $conn->query("SELECT * FROM layanan WHERE aktif=1");
                     </div>
                     <a href="../service/manage_pelayanan.php" class="btn-card" style="background-color: #333;">Atur Layanan</a>
                 </div>
-                 <div class="menu-card" style="border-left: 5px solid #333;">
+                <div class="menu-card" style="border-left: 5px solid #333;">
                     <div>
                         <h4><i class="fas fa-users"></i> Data Pengguna</h4>
                         <p>Lihat semua akun user terdaftar.</p>
@@ -61,15 +63,15 @@ $queryLayanan = $conn->query("SELECT * FROM layanan WHERE aktif=1");
 
             <h3>Daftar Pasien per Layanan</h3>
             <div class="menu-grid">
-                
-                <?php while($row = $queryLayanan->fetch_assoc()): ?>
-                <div class="menu-card">
-                    <div>
-                        <h4><i class="fas fa-notes-medical" style="color:var(--primary);"></i> <?php echo $row['nama_layanan']; ?></h4>
-                        <p>Kelola data janji temu & pasien <?php echo strtolower($row['nama_layanan']); ?>.</p>
+
+                <?php while ($row = $queryLayanan->fetch_assoc()): ?>
+                    <div class="menu-card">
+                        <div>
+                            <h4><i class="fas fa-notes-medical" style="color:var(--primary);"></i> <?php echo $row['nama_layanan']; ?></h4>
+                            <p>Kelola data janji temu & pasien <?php echo strtolower($row['nama_layanan']); ?>.</p>
+                        </div>
+                        <a href="../service/manage_janji.php?layanan_id=<?php echo $row['id']; ?>" class="btn-card">Buka Data</a>
                     </div>
-                    <a href="../service/manage_janji.php?layanan_id=<?php echo $row['id']; ?>" class="btn-card">Buka Data</a>
-                </div>
                 <?php endwhile; ?>
 
                 <div class="menu-card" style="background-color: #f4f9f4;">
@@ -87,4 +89,5 @@ $queryLayanan = $conn->query("SELECT * FROM layanan WHERE aktif=1");
 
     <?php include '../layout/footer.html'; ?>
 </body>
+
 </html>
