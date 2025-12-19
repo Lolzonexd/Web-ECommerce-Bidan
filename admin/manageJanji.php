@@ -4,7 +4,7 @@ include '../service/koneksi.php';
 
 // Cek Admin
 if (!isset($_SESSION['loggedin']) || $_SESSION['level'] !== 'admin') {
-    header("location: login.php");
+    header("location: ../page/login.php");
     exit;
 }
 
@@ -16,7 +16,7 @@ if (isset($_GET['aksi']) && isset($_GET['id'])) {
     $conn->query("UPDATE janji SET status='$status_baru' WHERE id='$id_janji'");
 
     // Redirect kembali agar URL bersih (tetap bawa filter layanan jika ada)
-    $redirect_url = "manage_janji.php";
+    $redirect_url = "manageJanji.php";
     if (isset($_GET['layanan_id'])) $redirect_url .= "?layanan_id=" . $_GET['layanan_id'];
     header("Location: " . $redirect_url);
     exit;
@@ -107,7 +107,7 @@ $result = $conn->query($sql);
 <body>
 
     <nav class="navbar-dashboard">
-        <a href="../admin/dashboard_admin.php" class="brand"><i class="fas fa-arrow-left"></i> Kembali ke Dashboard</a>
+        <a href="dashboardAdmin.php" class="brand"><i class="fas fa-arrow-left"></i> Kembali ke Dashboard</a>
         <div class="nav-right"><span class="user-greeting">Atmin</span></div>
     </nav>
 
@@ -116,7 +116,7 @@ $result = $conn->query($sql);
         <div class="card-box">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
                 <h3 class="card-title" style="margin:0; border:none;"><?php echo $judulHalaman; ?></h3>
-                <a href="manage_janji.php" class="btn-card" style="padding: 5px 15px; font-size: 0.9rem;">Reset Filter</a>
+                <a href="manageJanji.php" class="btn-card" style="padding: 5px 15px; font-size: 0.9rem;">Reset Filter</a>
             </div>
 
             <div class="table-responsive">
@@ -158,9 +158,9 @@ $result = $conn->query($sql);
                                     <td><span class="badge <?= $bg ?>"><?= ucfirst($row['status']) ?></span></td>
                                     <td>
                                         <?php if ($row['status'] == 'pending' || $row['status'] == 'dibayar'): ?>
-                                            <a href="manage_janji.php?aksi=selesai&id=<?= $row['id'] ?><?= $linkFilter ?>" class="btn-action btn-finish" title="Tandai Selesai" onclick="return confirm('Tandai pelayanan ini selesai?')"><i class="fas fa-check-double"></i> Selesai</a>
+                                            <a href="manageJanji.php?aksi=selesai&id=<?= $row['id'] ?><?= $linkFilter ?>" class="btn-action btn-finish" title="Tandai Selesai" onclick="return confirm('Tandai pelayanan ini selesai?')"><i class="fas fa-check-double"></i> Selesai</a>
 
-                                            <a href="manage_janji.php?aksi=batal&id=<?= $row['id'] ?><?= $linkFilter ?>" class="btn-action btn-reject" title="Batalkan" onclick="return confirm('Batalkan janji ini?')"><i class="fas fa-times"></i> Batal</a>
+                                            <a href="manageJanji.php?aksi=batal&id=<?= $row['id'] ?><?= $linkFilter ?>" class="btn-action btn-reject" title="Batalkan" onclick="return confirm('Batalkan janji ini?')"><i class="fas fa-times"></i> Batal</a>
                                         <?php else: ?>
                                             <span style="color:#ccc; font-size:0.8rem;">Tidak ada aksi</span>
                                         <?php endif; ?>

@@ -49,7 +49,7 @@ include '../helper/authChecker.php';
                         <h4>Buat Janji Baru</h4>
                         <p>Daftar layanan pemeriksaan kehamilan, imunisasi, atau KB secara online.</p>
                     </div>
-                    <a href="booking_form.php" class="btn-card">Masuk</a>
+                    <a href="bookingForm.php" class="btn-card">Masuk</a>
                 </div>
 
                 <div class="menu-card">

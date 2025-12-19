@@ -4,7 +4,7 @@ include '../service/koneksi.php'; // Panggil database untuk ambil daftar layanan
 
 // Cek Login & Level Admin
 if (!isset($_SESSION['loggedin']) || $_SESSION['level'] !== 'admin') {
-    header("location: login.php");
+    header("location: ../page/login.php");
     exit;
 }
 
@@ -50,14 +50,14 @@ $queryLayanan = $conn->query("SELECT * FROM layanan WHERE aktif=1");
                         <h4><i class="fas fa-database"></i> Master Layanan</h4>
                         <p>Tambah/Edit jenis layanan & harga.</p>
                     </div>
-                    <a href="../service/manage_pelayanan.php" class="btn-card" style="background-color: #333;">Atur Layanan</a>
+                    <a href="managePelayanan.php" class="btn-card" style="background-color: #333;">Atur Layanan</a>
                 </div>
                 <div class="menu-card" style="border-left: 5px solid #333;">
                     <div>
                         <h4><i class="fas fa-users"></i> Data Pengguna</h4>
                         <p>Lihat semua akun user terdaftar.</p>
                     </div>
-                    <a href="manage_user.php" class="btn-card" style="background-color: #333;">Lihat User</a>
+                    <a href="manageUser.php" class="btn-card" style="background-color: #333;">Lihat User</a>
                 </div>
             </div>
 
@@ -70,7 +70,7 @@ $queryLayanan = $conn->query("SELECT * FROM layanan WHERE aktif=1");
                             <h4><i class="fas fa-notes-medical" style="color:var(--primary);"></i> <?php echo $row['nama_layanan']; ?></h4>
                             <p>Kelola data janji temu & pasien <?php echo strtolower($row['nama_layanan']); ?>.</p>
                         </div>
-                        <a href="../service/manage_janji.php?layanan_id=<?php echo $row['id']; ?>" class="btn-card">Buka Data</a>
+                        <a href="manageJanji.php?layanan_id=<?php echo $row['id']; ?>" class="btn-card">Buka Data</a>
                     </div>
                 <?php endwhile; ?>
 
@@ -79,7 +79,7 @@ $queryLayanan = $conn->query("SELECT * FROM layanan WHERE aktif=1");
                         <h4><i class="fas fa-list-alt" style="color:var(--primary);"></i> Semua Janji</h4>
                         <p>Lihat gabungan semua data booking masuk.</p>
                     </div>
-                    <a href="../service/manage_janji.php" class="btn-card">Lihat Semua</a>
+                    <a href="manageJanji.php" class="btn-card">Lihat Semua</a>
                 </div>
 
             </div>

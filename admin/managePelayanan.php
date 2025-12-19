@@ -4,7 +4,7 @@ include '../service/koneksi.php';
 
 // Cek Admin
 if (!isset($_SESSION['loggedin']) || $_SESSION['level'] !== 'admin') {
-    header("location: login.php");
+    header("location: ../page/login.php");
     exit;
 }
 
@@ -18,7 +18,7 @@ if (isset($_POST['simpan_layanan'])) {
     $sql = "INSERT INTO layanan (nama_layanan, deskripsi, harga, aktif) VALUES ('$nama', '$deskripsi', '$harga', 1)";
 
     if ($conn->query($sql)) {
-        header("Location: manage_pelayanan.php?status=sukses");
+        header("Location: managePelayanan.php?status=sukses");
         exit;
     } else {
         $error = "Gagal menambah data: " . $conn->error;
@@ -29,7 +29,7 @@ if (isset($_POST['simpan_layanan'])) {
 if (isset($_GET['hapus'])) {
     $id = $_GET['hapus'];
     $conn->query("DELETE FROM layanan WHERE id='$id'");
-    header("Location: manage_pelayanan.php?status=hapus");
+    header("Location: managePelayanan.php?status=hapus");
     exit;
 }
 ?>
@@ -78,7 +78,7 @@ if (isset($_GET['hapus'])) {
 <body>
 
     <nav class="navbar-dashboard">
-        <a href="../admin/dashboard_admin.php" class="brand"><i class="fas fa-arrow-left"></i> Kembali</a>
+        <a href="dashboardAdmin.php" class="brand"><i class="fas fa-arrow-left"></i> Kembali</a>
         <div class="nav-right"><span class="user-greeting">Master Layanan</span></div>
     </nav>
 
@@ -145,8 +145,8 @@ if (isset($_GET['hapus'])) {
                                         <?php endif; ?>
                                     </td>
                                     <td>
-                                        <a href="../service/edit_pelayanan.php?id=<?= $row['id'] ?>" class="btn-action btn-edit"><i class="fas fa-edit"></i></a>
-                                        <a href="../service/manage_pelayanan.php?hapus=<?= $row['id'] ?>" class="btn-action btn-del" onclick="return confirm('Yakin ingin menghapus layanan ini?')"><i class="fas fa-trash"></i></a>
+                                        <a href="editPelayanan.php?id=<?= $row['id'] ?>" class="btn-action btn-edit"><i class="fas fa-edit"></i></a>
+                                        <a href="managePelayanan.php?hapus=<?= $row['id'] ?>" class="btn-action btn-del" onclick="return confirm('Yakin ingin menghapus layanan ini?')"><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
                             <?php endwhile; ?>

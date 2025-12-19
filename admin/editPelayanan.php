@@ -26,7 +26,7 @@ if (isset($_POST['update_layanan'])) {
             WHERE id='$id'";
 
     if ($conn->query($sql)) {
-        header("Location: manage_pelayanan.php");
+        header("Location: managePelayanan.php");
         exit;
     } else {
         echo "Error: " . $conn->error;
@@ -48,7 +48,7 @@ if (isset($_POST['update_layanan'])) {
 <body>
 
     <nav class="navbar-dashboard">
-        <a href="../service/manage_pelayanan.php" class="brand"><i class="fas fa-arrow-left"></i> Batal & Kembali</a>
+        <a href="managePelayanan.php" class="brand"><i class="fas fa-arrow-left"></i> Batal & Kembali</a>
         <div class="nav-right"><span class="user-greeting">Edit Data</span></div>
     </nav>
 
