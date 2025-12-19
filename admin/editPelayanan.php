@@ -26,7 +26,7 @@ if (isset($_POST['update_layanan'])) {
             WHERE id='$id'";
 
     if ($conn->query($sql)) {
-        header("Location: manage_pelayanan.php");
+        header("Location: managePelayanan.php");
         exit;
     } else {
         echo "Error: " . $conn->error;
@@ -36,29 +36,32 @@ if (isset($_POST['update_layanan'])) {
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <title>Edit Layanan - Admin</title>
     <link rel="stylesheet" href="../asset/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 </head>
+
 <body>
 
     <nav class="navbar-dashboard">
-        <a href="../service/manage_pelayanan.php" class="brand"><i class="fas fa-arrow-left"></i> Batal & Kembali</a>
+        <a href="managePelayanan.php" class="brand"><i class="fas fa-arrow-left"></i> Batal & Kembali</a>
         <div class="nav-right"><span class="user-greeting">Edit Data</span></div>
     </nav>
 
     <div class="dashboard-container" style="max-width: 600px;">
         <div class="card-box">
             <h3 class="card-title"><i class="fas fa-edit"></i> Edit Layanan</h3>
-            
+
             <form method="POST">
                 <div class="form-group">
                     <label>Nama Layanan</label>
                     <input type="text" name="nama_layanan" class="form-control" required value="<?= htmlspecialchars($data['nama_layanan']) ?>">
                 </div>
-                
+
                 <div class="form-group">
                     <label>Harga (Rp)</label>
                     <input type="number" name="harga" class="form-control" required value="<?= $data['harga'] ?>">
@@ -83,4 +86,5 @@ if (isset($_POST['update_layanan'])) {
     </div>
 
 </body>
+
 </html>

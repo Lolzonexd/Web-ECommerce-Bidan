@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 17, 2025 at 04:15 PM
+-- Generation Time: Dec 19, 2025 at 03:53 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `dbbidan`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `biodata`
+--
+
+CREATE TABLE `biodata` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `nama_lengkap` varchar(100) NOT NULL,
+  `nik` varchar(16) DEFAULT NULL,
+  `tanggal_lahir` date DEFAULT NULL,
+  `jenis_kelamin` enum('Laki-Laki','Perempuan') DEFAULT NULL,
+  `no_hp` varchar(15) DEFAULT NULL,
+  `alamat` text DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -111,6 +130,14 @@ INSERT INTO `user` (`id`, `username`, `email`, `password`, `level`, `remember_to
 --
 
 --
+-- Indexes for table `biodata`
+--
+ALTER TABLE `biodata`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `nik` (`nik`),
+  ADD KEY `fk_biodata_user` (`user_id`);
+
+--
 -- Indexes for table `janji`
 --
 ALTER TABLE `janji`
@@ -143,6 +170,12 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `biodata`
+--
+ALTER TABLE `biodata`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `janji`
 --
 ALTER TABLE `janji`
@@ -169,6 +202,12 @@ ALTER TABLE `user`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `biodata`
+--
+ALTER TABLE `biodata`
+  ADD CONSTRAINT `fk_biodata_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `janji`
