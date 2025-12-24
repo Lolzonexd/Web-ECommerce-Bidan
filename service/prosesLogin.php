@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         "expires" => time() + 60 * 60 * 24 * 30,
                         "path" => "/",
                         "secure" => true,        // HTTPS wajib
-                        "httponly" => true,      // cegah JS akses
+                        // "httponly" => true,   // cegah JS akses -> Nanti pas hosting
                         "samesite" => "Strict",  // cegah CSRF
                     ]
                 );

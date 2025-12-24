@@ -1,12 +1,7 @@
 <?php
 session_start();
 include '../service/koneksi.php';
-
-// Cek Admin
-if (!isset($_SESSION['loggedin']) || $_SESSION['level'] !== 'admin') {
-    header("location: ../page/login.php");
-    exit;
-}
+include '../helper/authAdmin.php';
 
 // --- LOGIKA 1: TAMBAH LAYANAN (CREATE) ---
 if (isset($_POST['simpan_layanan'])) {

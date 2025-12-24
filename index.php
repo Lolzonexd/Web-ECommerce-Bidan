@@ -1,50 +1,7 @@
 <?php
 session_start();
 include 'service/koneksi.php';
-
-if (isset($_COOKIE['remember_me'])) {
-    $token = $_COOKIE['remember_me'];
-    $hashedToken = hash('sha256', $token);
-
-    $sql = "SELECT id, username, level, remember_expire 
-            FROM user 
-            WHERE remember_token = ?";
-
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $hashedToken);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows === 1) {
-        $user = $result->fetch_assoc();
-
-        if (strtotime($user['remember_expire']) > time()) {
-            session_regenerate_id(true);
-
-            $_SESSION['loggedin'] = true;
-            $_SESSION['user_id']  = $user['id'];
-            $_SESSION['username'] = $user['username'];
-            $_SESSION['level']    = $user['level'];
-
-            switch ($user['level']) {
-                case 'admin':
-                    header("Location: admin/dashboard.php");
-                    exit;
-
-                case 'user':
-                    header("Location: public/dashboard.php");
-                    exit;
-
-                default:
-                    $_SESSION['login_error'] = "Terjadi Kesalahan pada server, coba beberapa saat lagi: ";
-                    header("Location: page/login.php");
-                    exit;
-            }
-        } else {
-            setcookie("remember_me", "", time() - 3600, "/");
-        }
-    }
-}
+include 'helper/redirectIfLoggedIn.php';
 ?>
 <!DOCTYPE html>
 <html lang="id">

@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../service/koneksi.php';
+include '../helper/authUser.php';
 
 $user_id = $_SESSION['user_id'] ?? $_SESSION['id'];
 
@@ -94,7 +95,7 @@ $result = $conn->query($sql);
         </a>
         <div class="nav-right">
             <span class="user-greeting">Halo, <b><?php echo htmlspecialchars($_SESSION['username']); ?></b></span>
-            <a href="dashboard.php" class="btn-logout-nav" style="background:transparent; border:1px solid white;">Kembali</a>
+            <a href="dashboardUser.php" class="btn-logout-nav" style="background:transparent; border:1px solid white;">Kembali</a>
         </div>
     </nav>
 

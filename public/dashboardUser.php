@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../helper/authChecker.php';
+include '../helper/authUser.php';
 ?>
 
 <!DOCTYPE html>

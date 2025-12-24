@@ -1,12 +1,7 @@
 <?php
 session_start();
-include '../service/koneksi.php'; // Panggil database untuk ambil daftar layanan
-
-// Cek Login & Level Admin
-if (!isset($_SESSION['loggedin']) || $_SESSION['level'] !== 'admin') {
-    header("location: ../page/login.php");
-    exit;
-}
+include '../service/koneksi.php';
+include '../helper/authAdmin.php';
 
 // Ambil Daftar Layanan Aktif untuk dijadikan Menu
 $queryLayanan = $conn->query("SELECT * FROM layanan WHERE aktif=1");

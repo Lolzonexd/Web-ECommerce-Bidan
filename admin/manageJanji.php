@@ -1,12 +1,7 @@
 <?php
 session_start();
 include '../service/koneksi.php';
-
-// Cek Admin
-if (!isset($_SESSION['loggedin']) || $_SESSION['level'] !== 'admin') {
-    header("location: ../page/login.php");
-    exit;
-}
+include '../helper/authAdmin.php';
 
 // 1. LOGIKA UPDATE STATUS (Terima/Tolak/Selesai)
 if (isset($_GET['aksi']) && isset($_GET['id'])) {
