@@ -1,11 +1,7 @@
 <?php
 session_start();
 include '../service/koneksi.php';
-
-if (!isset($_SESSION['loggedin']) || $_SESSION['level'] !== 'admin') {
-    header("location: ../page/login.php");
-    exit;
-}
+include '../helper/authAdmin.php';
 
 // Ambil ID dari URL
 $id = $_GET['id'];

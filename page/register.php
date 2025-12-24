@@ -1,5 +1,6 @@
 <?php
 session_start();
+include '../helper/redirectIfLoggedIn.php';
 ?>
 <!DOCTYPE html>
 <html lang="id">

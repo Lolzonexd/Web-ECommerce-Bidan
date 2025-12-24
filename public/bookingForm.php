@@ -1,6 +1,7 @@
 <?php
 session_start();
-include '../service/koneksi.php';   // Pastikan file koneksi database sudah ada
+include '../service/koneksi.php';
+include '../helper/authUser.php';
 
 // Ambil data layanan dari database untuk dropdown
 $queryLayanan = "SELECT * FROM layanan WHERE aktif = 1";
