@@ -80,11 +80,11 @@ include 'helper/redirectIfLoggedIn.php';
             </div>
             <div class="service-item">
                 <h3><i class="fa-solid fa-baby-carriage"></i> Pelayanan Keluarga Berencana (KB)</h3>
-                <p>TEst</p>
+                <p>Konsultasi dan pemilihan metode kontrasepsi terbaik demi perencanaan kebahagiaan keluarga kecil Anda.</p>
             </div>
             <div class="service-item">
                 <h3><i class="fa-solid fa-droplet"></i> Pelayanan ibu Nifas</h3>
-                <p>Test</p>
+                <p>Pendampingan penuh masa pemulihan pasca melahirkan agar Bunda kembali sehat dan siap merawat si Kecil.</p>
             </div>
         </div>
     </section>
