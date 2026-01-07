@@ -95,10 +95,7 @@ include 'helper/redirectIfLoggedIn.php';
         <img src="img/fotoProfile1.svg" alt="Bidan Ana" class="profile-img">
         <div class="profile-text">
             <h2>Bidan Nurhasanah, S.S.T., M.Kes.</h2>
-            <div class="quote">
-                "Test"
-            </div>
-            <p>LOREM IPSUM</p>
+            <p>Melayani sepenuh hati untuk kesehatan keluarga Anda. Menyediakan layanan Persalinan 24 Jam, Imunisasi Lengkap, KB, dan Konsultasi Kehamilan dengan fasilitas yang nyaman dan modern.</p>
         </div>
     </section>
     <!-- END PROFILE -->
