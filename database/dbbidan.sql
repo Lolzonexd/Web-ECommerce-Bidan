@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2025 at 03:53 PM
+-- Generation Time: Jan 08, 2026 at 01:23 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,6 +40,13 @@ CREATE TABLE `biodata` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `biodata`
+--
+
+INSERT INTO `biodata` (`id`, `user_id`, `nama_lengkap`, `nik`, `tanggal_lahir`, `jenis_kelamin`, `no_hp`, `alamat`, `created_at`, `updated_at`) VALUES
+(0, 3, 'Al-Hakim', '1321453254536', '2025-12-30', 'Laki-Laki', '082147621751', 'jalan-jalan', '2025-12-25 15:50:21', '2025-12-25 15:50:21');
+
 -- --------------------------------------------------------
 
 --
@@ -55,6 +62,14 @@ CREATE TABLE `janji` (
   `status` enum('pending','dibayar','selesai','batal') DEFAULT 'pending',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `janji`
+--
+
+INSERT INTO `janji` (`id`, `user_id`, `layanan_id`, `tanggal`, `jam`, `status`, `created_at`) VALUES
+(4, 7, 1, '2025-12-18', '16:00:00', 'selesai', '2025-12-18 03:55:48'),
+(8, 8, 4, '2026-01-08', '12:10:00', 'pending', '2026-01-08 00:04:16');
 
 -- --------------------------------------------------------
 
@@ -80,7 +95,7 @@ INSERT INTO `layanan` (`id`, `nama_layanan`, `deskripsi`, `harga`, `aktif`) VALU
 (3, 'Imunisasi', NULL, 75000, 1),
 (4, 'Mom & Baby Spa', NULL, 100000, 1),
 (5, 'KB', NULL, 60000, 1),
-(6, 'Pelayanan Ibu Nifas', NULL, 80000, 1);
+(6, 'Pelayanan Ibu Nifas', '', 100000, 1);
 
 -- --------------------------------------------------------
 
@@ -96,6 +111,13 @@ CREATE TABLE `transaksi` (
   `status` varchar(20) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `transaksi`
+--
+
+INSERT INTO `transaksi` (`id`, `janji_id`, `order_id`, `gross_amount`, `status`, `created_at`) VALUES
+(11, 8, 'TRX-8-1767830664', 100000, 'pending', '2026-01-08 00:04:25');
 
 -- --------------------------------------------------------
 
@@ -118,24 +140,15 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `level`, `remember_token`, `remember_expire`) VALUES
-(1, 'Admin1', 'Admin@gmail.com', '123', 'admin', NULL, NULL),
-(2, '062430701386', 'tukangdab102@gmail.com', '$2y$10$H7gZ4GzjMJTNU.DJEfJ/ce3exGXqlMlIl2pTr.y3cd68zvpu5CDTO', 'admin', NULL, NULL),
-(3, 'ajax', 'pok@gmail.com', '$2y$10$ZtwLMEgBiAskmLthqjJt8e0PYTKHPe8t9FmlnhSfmvzL1QU1UwCFO', 'user', NULL, NULL),
 (4, 'hanif', 'hanif@gmail.com', '$2y$10$ec/5hIFs9Soi2SRFPBbCg.PkwLpjveIIejs9089/E.XXWmQbjhzoK', 'user', NULL, NULL),
 (5, 'hanif2', 'hanif2@gmail.com', '$2y$10$RruHprEDUvdqEvZtZlrLQ.xUcsl6.H/64gghVxnTrwJLRJJI6MsbO', 'user', NULL, NULL),
-(6, 'lolzonexd', 'lolzonexd@gmail.com', '$2y$10$eGub7fKn/eChIaCgovfL7u5Jw.OoZaa00l3zKBrUeD8G1x5.7KkVK', 'admin', NULL, NULL);
+(6, 'lolzonexd', 'lolzonexd@gmail.com', '$2y$10$eGub7fKn/eChIaCgovfL7u5Jw.OoZaa00l3zKBrUeD8G1x5.7KkVK', 'admin', NULL, NULL),
+(7, 'Hakim', 'hakim2@gmail.com', '$2y$10$6l0BpE7wsQaVyXqD08mArO6UWFqdQZ7UbsF55C4uW0Qfd6WrX/TWC', 'user', NULL, NULL),
+(8, 'Falaki', 'falakigeming@gmail.com', '$2y$10$Y2KDHe79iOCli5TvTk1hNea6Zu3LrDJmgzP.C6SbddwGWogPnIhVq', 'user', NULL, NULL);
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `biodata`
---
-ALTER TABLE `biodata`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `nik` (`nik`),
-  ADD KEY `fk_biodata_user` (`user_id`);
 
 --
 -- Indexes for table `janji`
@@ -170,57 +183,45 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `biodata`
---
-ALTER TABLE `biodata`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `janji`
 --
 ALTER TABLE `janji`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `layanan`
 --
 ALTER TABLE `layanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `biodata`
---
-ALTER TABLE `biodata`
-  ADD CONSTRAINT `fk_biodata_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `janji`
 --
 ALTER TABLE `janji`
-  ADD CONSTRAINT `janji_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
-  ADD CONSTRAINT `janji_ibfk_2` FOREIGN KEY (`layanan_id`) REFERENCES `layanan` (`id`);
+  ADD CONSTRAINT `janji_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `janji_ibfk_2` FOREIGN KEY (`layanan_id`) REFERENCES `layanan` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`janji_id`) REFERENCES `janji` (`id`);
+  ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`janji_id`) REFERENCES `janji` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
