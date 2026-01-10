@@ -56,7 +56,7 @@ $queryLayanan = $conn->query("SELECT * FROM layanan WHERE aktif=1");
                 </div>
             </div>
 
-            <h3>Daftar Pasien per Layanan</h3>
+            <h3>Daftar transaksi per Layanan</h3>
             <div class="menu-grid">
 
                 <?php while ($row = $queryLayanan->fetch_assoc()): ?>

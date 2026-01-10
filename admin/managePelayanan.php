@@ -3,7 +3,7 @@ session_start();
 include '../service/koneksi.php';
 include '../helper/authAdmin.php';
 
-// --- LOGIKA 1: TAMBAH LAYANAN (CREATE) ---
+// ---  TAMBAH LAYANAN (CREATE) ---
 if (isset($_POST['simpan_layanan'])) {
     $nama      = $_POST['nama_layanan'];
     $harga     = $_POST['harga'];

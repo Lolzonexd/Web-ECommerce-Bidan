@@ -63,7 +63,7 @@ include '../helper/authUser.php';
                 <div class="menu-card">
                     <div>
                         <h4>Pembayaran</h4>
-                        <p>Konfirmasi pembayaran atau upload bukti transfer layanan.</p>
+                        <p>Konfirmasi pembayaran layanan.</p>
                     </div>
                     <a href="payment_list.php" class="btn-card">Masuk</a>
                 </div>
