@@ -1,5 +1,8 @@
 /Thumbs.db
 /desktop.ini
 /listPassword.md
+
+# Payment
 /service/koneksi.php
+/public/payment.php
 /config/midtrans_config.php
