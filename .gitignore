@@ -12,6 +12,7 @@
 /public/error_log
 /public/service
 /service/error_log
+/service/midtrans.log
 
 # Databse Dump
 /database/*
