@@ -6,7 +6,6 @@ include 'koneksi.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Composer autoload (PAKAI INI SAJA)
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $mailconfig = require '../config/mail.php';
@@ -66,10 +65,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->Password   = $mailconfig['password'];
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
             $mail->Port       = $mailconfig['port'];
-        
+
             $mail->setFrom($mailconfig['username'], 'PMB Nurhasanah');
             $mail->addAddress($email, $usename);
-        
+
             $mail->isHTML(true);
             $mail->Subject = 'Akun Berhasil Dibuat';
             $mail->Body    = "
@@ -89,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <p>Salam Sehat,<br><b>Admin PMB Nurhasanah</b></p>
                 </div>
             ";
-        
+
             $mail->send();
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
@@ -98,13 +97,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['registration_success'] = "Pendaftaran berhasil! Silakan login.";
         header("Location: ../page/login.php");
         exit();
-
     } else {
         $_SESSION['registration_error'] = "Terjadi Kesalahan pada server, coba beberapa saat lagi.";
         header("Location: ../page/register.php");
         exit;
     }
-
 } else {
     header("Location: ../page/register.php");
     exit();

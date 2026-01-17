@@ -5,7 +5,7 @@
 # Payment
 /config/*
 
-# Config
+# Log
 /error_log
 /admin/error_log
 /page/error_log

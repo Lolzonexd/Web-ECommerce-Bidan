@@ -6,7 +6,6 @@ include 'koneksi.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Composer autoload (PAKAI INI SAJA)
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $mailconfig = require '../config/mail.php';
@@ -49,10 +48,10 @@ try {
     $mail->Password   = $mailconfig['password'];
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
     $mail->Port       = $mailconfig['port'];
-        
+
     $mail->setFrom($mailconfig['username'], 'PMB Nurhasanah');
     $mail->addAddress($email, $user['usename']);
-        
+
     $mail->isHTML(true);
     $mail->Subject = 'Konfirmasi Reset Password';
     $mail->Body    = "
@@ -78,4 +77,3 @@ try {
     header("Location: ../page/lupaPassword.php");
     exit;
 }
-?>

@@ -13,7 +13,6 @@ $id_janji = $_GET['id'];
 $user_id = $_SESSION['user_id'] ?? $_SESSION['id'];
 
 // Ambil data Rekam Medis + Info Janji + Biodata User
-// Kita pastikan user_id cocok agar orang lain tidak bisa intip hasil punya orang lain
 $sql = "SELECT rekam_medis.*, janji.tanggal, janji.jam, layanan.nama_layanan, biodata.nama_lengkap
         FROM rekam_medis
         JOIN janji ON rekam_medis.janji_id = janji.id
@@ -33,6 +32,7 @@ if (!$data) {
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,9 +40,8 @@ if (!$data) {
     <link rel="stylesheet" href="../asset/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
-        /* TEMA SESUAI DASHBOARD USER */
         body {
             background-color: #fdfbf5;
             font-family: 'Poppins', sans-serif;
@@ -52,7 +51,9 @@ if (!$data) {
         .navbar-dashboard {
             background-color: #6b9080;
         }
-        .navbar-dashboard a, .navbar-dashboard span {
+
+        .navbar-dashboard a,
+        .navbar-dashboard span {
             color: white !important;
             border-color: white !important;
         }
@@ -63,29 +64,30 @@ if (!$data) {
             margin-top: 30px;
             background: white;
             border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
             overflow: hidden;
             position: relative;
         }
 
-        /* Header Laporan Hijau Sage */
         .report-header {
             background-color: #6b9080;
             color: white;
             padding: 30px;
             text-align: center;
         }
+
         .report-header h2 {
             font-family: 'Playfair Display', serif;
             margin: 0;
             font-size: 1.8rem;
-            color: white !important; /* Paksa jadi putih */
+            color: white !important;
         }
+
         .report-header p {
             margin: 5px 0 0;
             opacity: 0.9;
             font-size: 0.9rem;
-            color: white !important; /* Paksa jadi putih juga */
+            color: white !important;
         }
 
         .report-body {
@@ -101,12 +103,14 @@ if (!$data) {
             padding-bottom: 20px;
             border-bottom: 2px dashed #eee;
         }
+
         .info-item label {
             display: block;
             font-size: 0.85rem;
             color: #888;
             margin-bottom: 5px;
         }
+
         .info-item div {
             font-weight: 600;
             color: #333;
@@ -120,22 +124,40 @@ if (!$data) {
             gap: 20px;
             margin-bottom: 30px;
         }
+
         .vital-item {
             flex: 1;
             padding: 15px;
             border-radius: 10px;
             text-align: center;
         }
-        .vital-tensi { background: #e8f5e9; color: #2e7d32; }
-        .vital-berat { background: #e3f2fd; color: #1565c0; }
 
-        .vital-value { font-size: 1.3rem; font-weight: bold; margin-top: 5px; }
-        .vital-label { font-size: 0.8rem; opacity: 0.8; }
+        .vital-tensi {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .vital-berat {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .vital-value {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .vital-label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
 
         /* Section Medis */
         .medical-section {
             margin-bottom: 25px;
         }
+
         .medical-title {
             color: #6b9080;
             font-weight: 600;
@@ -146,6 +168,7 @@ if (!$data) {
             align-items: center;
             gap: 10px;
         }
+
         .medical-content {
             background: #f9f9f9;
             padding: 15px;
@@ -165,18 +188,32 @@ if (!$data) {
             font-weight: 600;
             transition: 0.3s;
         }
+
         .btn-back-report:hover {
             background: #e0e0e0;
             color: #333;
         }
-        
+
         @media print {
-            .navbar-dashboard, .btn-back-report { display: none; }
-            body { background: white; }
-            .report-container { box-shadow: none; border: 1px solid #ccc; margin-top: 0; }
+
+            .navbar-dashboard,
+            .btn-back-report {
+                display: none;
+            }
+
+            body {
+                background: white;
+            }
+
+            .report-container {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                margin-top: 0;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <nav class="navbar-dashboard">
@@ -189,7 +226,7 @@ if (!$data) {
     </nav>
 
     <div class="dashboard-container">
-        
+
         <a href="history.php" style="text-decoration:none; color:#6b9080; font-weight:600; display:inline-block; margin-bottom:10px;">
             <i class="fas fa-arrow-left"></i> Kembali ke Riwayat
         </a>
@@ -202,7 +239,7 @@ if (!$data) {
             </div>
 
             <div class="report-body">
-                
+
                 <div class="info-grid">
                     <div class="info-item">
                         <label>Nama Pasien</label>
@@ -261,4 +298,5 @@ if (!$data) {
 
     <?php include '../layout/footer.html'; ?>
 </body>
+
 </html>

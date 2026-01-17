@@ -2,13 +2,11 @@
 session_start();
 include '../service/koneksi.php';
 
-// 1. CEK KEAMANAN
 if (!isset($_SESSION['loggedin']) || $_SESSION['level'] !== 'bidan') {
     header("Location: ../page/login.php");
     exit;
 }
 
-// 2. AMBIL DATA ANTRIAN
 $sql = "SELECT janji.*, biodata.nama_lengkap, layanan.nama_layanan 
         FROM janji 
         JOIN biodata ON janji.user_id = biodata.user_id 
@@ -26,30 +24,29 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Bidan - PMB Nurhasanah</title>
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="../asset/style.css">
 
     <style>
-        /* --- TEMA SESUAI GAMBAR USER --- */
         body {
-            background-color: #fdfbf5; /* Cream Lembut */
+            background-color: #fdfbf5;
+            /* Cream Lembut */
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding-bottom: 50px;
         }
 
-        /* NAVBAR HIJAU SAGE (SESUAI REQUEST) */
         .navbar-bidan {
-            background-color: #6b9080; /* Warna Hijau Dashboard User */
+            background-color: #6b9080;
             padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 40px;
             color: white;
         }
@@ -58,7 +55,7 @@ $result = $conn->query($sql);
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
             font-weight: 700;
-            color: white; /* Teks Putih */
+            color: white;
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -70,7 +67,7 @@ $result = $conn->query($sql);
             align-items: center;
             gap: 20px;
             font-size: 0.95rem;
-            color: white; /* Teks Putih */
+            color: white;
         }
 
         /* Tombol Logout Putih Transparan */
@@ -85,9 +82,10 @@ $result = $conn->query($sql);
             font-size: 0.85rem;
             background: rgba(255, 255, 255, 0.1);
         }
+
         .btn-logout:hover {
             background: white;
-            color: #6b9080; /* Teks jadi hijau saat hover */
+            color: #6b9080;
         }
 
         /* Container Utama */
@@ -101,7 +99,7 @@ $result = $conn->query($sql);
         h2.page-title {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
-            color: #6b9080; /* Hijau Judul */
+            color: #6b9080;
             margin-bottom: 20px;
             font-size: 1.8rem;
         }
@@ -125,7 +123,7 @@ $result = $conn->query($sql);
             background-color: white;
             color: #444;
             text-align: left;
-            border-bottom: 2px solid #6b9080; /* Garis Hijau di Header */
+            border-bottom: 2px solid #6b9080;
         }
 
         .styled-table th {
@@ -149,7 +147,7 @@ $result = $conn->query($sql);
 
         /* Hover Effect */
         .styled-table tbody tr:hover {
-            background-color: #fff9e6; /* Kuning tipis saat di-hover */
+            background-color: #fff9e6;
         }
 
         /* Badge Status */
@@ -159,10 +157,12 @@ $result = $conn->query($sql);
             font-size: 0.8rem;
             font-weight: 500;
         }
+
         .badge-dibayar {
             background-color: #e8f5e9;
             color: #2e7d32;
         }
+
         .badge-pending {
             background-color: #fff8e1;
             color: #f57f17;
@@ -170,7 +170,8 @@ $result = $conn->query($sql);
 
         /* Tombol Aksi Hijau */
         .btn-periksa {
-            background-color: #6b9080; /* Hijau Sage */
+            background-color: #6b9080;
+            /* Hijau Sage */
             color: white;
             padding: 8px 16px;
             border-radius: 6px;
@@ -181,6 +182,7 @@ $result = $conn->query($sql);
             display: inline-block;
             box-shadow: 0 2px 5px rgba(107, 144, 128, 0.3);
         }
+
         .btn-periksa:hover {
             background-color: #557c67;
             transform: translateY(-2px);
@@ -204,7 +206,7 @@ $result = $conn->query($sql);
     </nav>
 
     <div class="container">
-        
+
         <h2 class="page-title">Antrian Pasien Hari Ini</h2>
 
         <div class="table-wrapper">
@@ -220,48 +222,48 @@ $result = $conn->query($sql);
                     </tr>
                 </thead>
                 <tbody>
-                    <?php 
+                    <?php
                     $no = 1;
                     if ($result->num_rows > 0) {
-                        while($row = $result->fetch_assoc()) { 
+                        while ($row = $result->fetch_assoc()) {
                             $statusClass = ($row['status'] == 'dibayar') ? 'badge-dibayar' : 'badge-pending';
                     ?>
-                    <tr>
-                        <td><?= $no++ ?></td>
-                        <td>
-                            <div style="font-weight: 600; color: #333;">
-                                <?= htmlspecialchars($row['nama_lengkap']) ?>
-                            </div>
-                        </td>
-                        <td><?= htmlspecialchars($row['nama_layanan']) ?></td>
-                        <td>
-                            <div style="color: #444;">
-                                <?= date('d M Y', strtotime($row['tanggal'])) ?>
-                            </div>
-                            <div style="font-size: 0.85rem; color: #888;">
-                                <?= date('H:i', strtotime($row['jam'])) ?> WIB
-                            </div>
-                        </td>
-                        <td>
-                            <span class="badge <?= $statusClass ?>">
-                                <?= ucfirst($row['status']) ?>
-                            </span>
-                        </td>
-                        <td style="text-align: center;">
-                            <a href="inputPemeriksaan.php?id_janji=<?= $row['id'] ?>" class="btn-periksa">
-                                Periksa Pasien
-                            </a>
-                        </td>
-                    </tr>
-                    <?php 
-                        } 
-                    } else { 
-                    ?>
-                    <tr>
-                        <td colspan="6" style="text-align: center; padding: 50px;">
-                            <p style="color: #888; font-style:italic;">Belum ada antrian pasien saat ini.</p>
-                        </td>
-                    </tr>
+                            <tr>
+                                <td><?= $no++ ?></td>
+                                <td>
+                                    <div style="font-weight: 600; color: #333;">
+                                        <?= htmlspecialchars($row['nama_lengkap']) ?>
+                                    </div>
+                                </td>
+                                <td><?= htmlspecialchars($row['nama_layanan']) ?></td>
+                                <td>
+                                    <div style="color: #444;">
+                                        <?= date('d M Y', strtotime($row['tanggal'])) ?>
+                                    </div>
+                                    <div style="font-size: 0.85rem; color: #888;">
+                                        <?= date('H:i', strtotime($row['jam'])) ?> WIB
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="badge <?= $statusClass ?>">
+                                        <?= ucfirst($row['status']) ?>
+                                    </span>
+                                </td>
+                                <td style="text-align: center;">
+                                    <a href="inputPemeriksaan.php?id_janji=<?= $row['id'] ?>" class="btn-periksa">
+                                        Periksa Pasien
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php
+                        }
+                    } else {
+                        ?>
+                        <tr>
+                            <td colspan="6" style="text-align: center; padding: 50px;">
+                                <p style="color: #888; font-style:italic;">Belum ada antrian pasien saat ini.</p>
+                            </td>
+                        </tr>
                     <?php } ?>
                 </tbody>
             </table>
@@ -269,4 +271,5 @@ $result = $conn->query($sql);
     </div>
 
 </body>
+
 </html>

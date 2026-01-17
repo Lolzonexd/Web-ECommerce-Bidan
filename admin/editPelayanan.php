@@ -12,7 +12,7 @@ if (isset($_POST['update_layanan'])) {
     $nama      = $_POST['nama_layanan'];
     $harga     = $_POST['harga'];
     $deskripsi = $_POST['deskripsi'];
-    $aktif     = $_POST['aktif']; // 1 atau 0
+    $aktif     = $_POST['aktif'];
 
     $sql = "UPDATE layanan SET 
             nama_layanan='$nama', 

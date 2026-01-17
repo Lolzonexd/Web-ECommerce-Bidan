@@ -32,15 +32,14 @@ $data = $conn->query($sql)->fetch_assoc();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Input Pemeriksaan - PMB Nurhasanah</title>
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="../asset/style.css">
 
     <style>
-        /* --- TEMA CREAM & SAGE --- */
         body {
             background-color: #fdfbf5;
             font-family: 'Poppins', sans-serif;
@@ -48,17 +47,17 @@ $data = $conn->query($sql)->fetch_assoc();
             padding-bottom: 50px;
         }
 
-        /* Navbar Hijau (Konsisten) */
         .navbar-bidan {
             background-color: #6b9080;
             padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 30px;
             color: white;
         }
+
         .brand-logo {
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
@@ -69,6 +68,7 @@ $data = $conn->query($sql)->fetch_assoc();
             align-items: center;
             gap: 10px;
         }
+
         .user-info {
             color: white;
             font-size: 0.95rem;
@@ -101,7 +101,7 @@ $data = $conn->query($sql)->fetch_assoc();
 
         /* Info Pasien Box */
         .patient-info {
-            background-color: #e8f5e9; /* Hijau sangat muda */
+            background-color: #e8f5e9;
             border-left: 5px solid #6b9080;
             padding: 20px;
             border-radius: 8px;
@@ -109,12 +109,14 @@ $data = $conn->query($sql)->fetch_assoc();
             display: flex;
             gap: 40px;
         }
+
         .info-item label {
             display: block;
             font-size: 0.85rem;
             color: #555;
             margin-bottom: 3px;
         }
+
         .info-item span {
             font-weight: 600;
             font-size: 1.1rem;
@@ -126,6 +128,7 @@ $data = $conn->query($sql)->fetch_assoc();
         .form-group {
             margin-bottom: 20px;
         }
+
         .form-group label {
             display: block;
             font-weight: 600;
@@ -133,7 +136,8 @@ $data = $conn->query($sql)->fetch_assoc();
             margin-bottom: 8px;
             font-size: 0.95rem;
         }
-        .form-group input, 
+
+        .form-group input,
         .form-group textarea {
             width: 100%;
             padding: 12px 15px;
@@ -142,9 +146,10 @@ $data = $conn->query($sql)->fetch_assoc();
             font-family: 'Poppins', sans-serif;
             font-size: 1rem;
             transition: all 0.3s;
-            box-sizing: border-box; /* Agar padding tidak merusak lebar */
+            box-sizing: border-box;
         }
-        .form-group input:focus, 
+
+        .form-group input:focus,
         .form-group textarea:focus {
             border-color: #6b9080;
             outline: none;
@@ -169,6 +174,7 @@ $data = $conn->query($sql)->fetch_assoc();
             align-items: center;
             gap: 10px;
         }
+
         .btn-save:hover {
             background-color: #557c67;
             transform: translateY(-2px);
@@ -186,6 +192,7 @@ $data = $conn->query($sql)->fetch_assoc();
             font-weight: 500;
             transition: 0.3s;
         }
+
         .link-back:hover {
             color: #6b9080;
             transform: translateX(-5px);
@@ -208,13 +215,13 @@ $data = $conn->query($sql)->fetch_assoc();
         <a href="dashboardBidan.php" class="link-back">
             <i class="fa-solid fa-arrow-left"></i> Kembali ke Antrian
         </a>
-        
+
         <div class="card-box">
             <h2 class="form-title">
-                <i class="fa-solid fa-file-medical" style="margin-right:10px;"></i> 
+                <i class="fa-solid fa-file-medical" style="margin-right:10px;"></i>
                 Form Pemeriksaan Medis
             </h2>
-            
+
             <div class="patient-info">
                 <div class="info-item">
                     <label>Nama Pasien</label>
@@ -228,7 +235,7 @@ $data = $conn->query($sql)->fetch_assoc();
 
             <form action="../service/prosesInputPemeriksaan.php" method="POST">
                 <input type="hidden" name="janji_id" value="<?= $id_janji ?>">
-                
+
                 <div class="form-group">
                     <label><i class="fa-solid fa-head-side-cough"></i> Keluhan Pasien</label>
                     <textarea name="keluhan" rows="3" required placeholder="Jelaskan keluhan yang dirasakan pasien..."></textarea>
@@ -268,4 +275,5 @@ $data = $conn->query($sql)->fetch_assoc();
     </div>
 
 </body>
+
 </html>

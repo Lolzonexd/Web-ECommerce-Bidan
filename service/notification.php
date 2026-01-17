@@ -15,7 +15,6 @@ $fraud = $notif->fraud_status;
 
 $log_msg = date("Y-m-d H:i:s") . " | Order: $order_id | Status: $transaction \n";
 file_put_contents('midtrans.log', $log_msg, FILE_APPEND);
-// -----------------------------------------------------
 
 $status_transaksi = 'pending';
 
@@ -54,10 +53,8 @@ if ($cek_data->num_rows > 0) {
     } elseif ($status_transaksi == 'batal') {
         $conn->query("UPDATE janji SET status = 'batal' WHERE id = '$id_janji'");
     }
-    
-    echo "OK, Status Updated to $status_transaksi";
 
+    echo "OK, Status Updated to $status_transaksi";
 } else {
     echo "Order ID Not Found";
 }
-?>

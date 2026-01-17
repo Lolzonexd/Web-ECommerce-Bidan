@@ -1,12 +1,10 @@
 <?php
 session_start();
-include '../service/koneksi.php';         // Panggil koneksi database ($conn)
+include '../service/koneksi.php';
 
 // Ambil ID User dari Session
 $id = $_SESSION['user_id'] ?? $_SESSION['id'];
 
-// QUERY: Gabungkan data User dan Biodata
-// Menggunakan $conn->query
 $query = "SELECT user.username, user.email, biodata.* FROM user 
           LEFT JOIN biodata ON user.id = biodata.user_id 
           WHERE user.id = '$id'";
@@ -17,6 +15,7 @@ $data = $result->fetch_assoc();
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,8 +24,17 @@ $data = $result->fetch_assoc();
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        @media (max-width: 768px) { .form-grid { grid-template-columns: 1fr; } }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 
@@ -42,12 +50,12 @@ $data = $result->fetch_assoc();
     </nav>
 
     <div class="dashboard-container">
-        
-        <?php if(isset($_GET['status']) && $_GET['status'] == 'success'): ?>
+
+        <?php if (isset($_GET['status']) && $_GET['status'] == 'success'): ?>
             <div style="background: #d4edda; color: #155724; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
                 <i class="fas fa-check-circle"></i> Data profil berhasil diperbarui!
             </div>
-        <?php elseif(isset($_GET['status']) && $_GET['status'] == 'error'): ?>
+        <?php elseif (isset($_GET['status']) && $_GET['status'] == 'error'): ?>
             <div style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
                 <i class="fas fa-exclamation-circle"></i> Gagal menyimpan: <?php echo htmlspecialchars($_GET['msg']); ?>
             </div>
@@ -60,7 +68,7 @@ $data = $result->fetch_assoc();
             </div>
 
             <form action="../service/prosesprofile.php" method="POST">
-                
+
                 <h4 style="color:var(--primary); margin-bottom:15px;">Informasi Akun</h4>
                 <div class="form-grid">
                     <div class="form-group">
@@ -76,7 +84,7 @@ $data = $result->fetch_assoc();
                 <hr style="border: 0; border-top: 1px dashed #ddd; margin: 20px 0;">
 
                 <h4 style="color:var(--primary); margin-bottom:15px;">Biodata Diri</h4>
-                
+
                 <div class="form-group">
                     <label>Nama Lengkap (Sesuai KTP)</label>
                     <input type="text" name="nama_lengkap" class="form-control" value="<?php echo htmlspecialchars($data['nama_lengkap'] ?? ''); ?>" placeholder="Masukkan nama lengkap">
@@ -122,4 +130,5 @@ $data = $result->fetch_assoc();
 
     <?php include '../layout/footer.html'; ?>
 </body>
+
 </html>

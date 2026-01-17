@@ -17,12 +17,14 @@ $result = $conn->query($sql);
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <title>Daftar Tagihan - PMB Nurhasanah</title>
     <link rel="stylesheet" href="../asset/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
 
     <nav class="navbar-dashboard">
@@ -51,25 +53,25 @@ $result = $conn->query($sql);
                     </tr>
                 </thead>
                 <tbody>
-                    <?php 
+                    <?php
                     if ($result && $result->num_rows > 0) {
                         $no = 1;
-                        while($row = $result->fetch_assoc()) { 
+                        while ($row = $result->fetch_assoc()) {
                     ?>
-                        <tr style="border-bottom:1px solid #eee;">
-                            <td style="padding:15px;"><?= $no++ ?></td>
-                            <td><?= htmlspecialchars($row['nama_layanan']) ?></td>
-                            <td><?= date('d M Y', strtotime($row['tanggal'])) ?></td>
-                            <td style="font-weight:bold;">Rp <?= number_format($row['harga'], 0, ',', '.') ?></td>
-                            <td>
-                                <a href="payment.php?id=<?= $row['id'] ?>" class="btn-card" style="padding:5px 15px; font-size:0.9rem;">
-                                    <i class="fas fa-wallet"></i> Bayar
-                                </a>
-                            </td>
-                        </tr>
-                    <?php 
+                            <tr style="border-bottom:1px solid #eee;">
+                                <td style="padding:15px;"><?= $no++ ?></td>
+                                <td><?= htmlspecialchars($row['nama_layanan']) ?></td>
+                                <td><?= date('d M Y', strtotime($row['tanggal'])) ?></td>
+                                <td style="font-weight:bold;">Rp <?= number_format($row['harga'], 0, ',', '.') ?></td>
+                                <td>
+                                    <a href="payment.php?id=<?= $row['id'] ?>" class="btn-card" style="padding:5px 15px; font-size:0.9rem;">
+                                        <i class="fas fa-wallet"></i> Bayar
+                                    </a>
+                                </td>
+                            </tr>
+                    <?php
                         }
-                    } else { 
+                    } else {
                         echo "<tr><td colspan='5' style='text-align:center; padding:30px;'>Tidak ada tagihan pending.</td></tr>";
                     } ?>
                 </tbody>
@@ -77,4 +79,5 @@ $result = $conn->query($sql);
         </div>
     </div>
 </body>
+
 </html>

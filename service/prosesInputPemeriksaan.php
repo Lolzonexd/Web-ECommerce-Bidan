@@ -1,5 +1,4 @@
 <?php
-// service/prosesInputPemeriksaan.php
 session_start();
 include 'koneksi.php';
 
@@ -12,13 +11,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tindakan = $_POST['tindakan'];
     $resep    = $_POST['resep'];
 
-    // 1. Simpan ke Tabel Rekam Medis
     $sql = "INSERT INTO rekam_medis (janji_id, keluhan, tensi_darah, berat_badan, diagnosa, tindakan, resep_obat) 
             VALUES ('$janji_id', '$keluhan', '$tensi', '$berat', '$diagnosa', '$tindakan', '$resep')";
 
     if ($conn->query($sql) === TRUE) {
-        // 2. Update Status Janji menjadi 'selesai'
-        // Agar pasien hilang dari antrian dashboard bidan
         $conn->query("UPDATE janji SET status = 'selesai' WHERE id = '$janji_id'");
 
         echo "<script>
@@ -29,4 +25,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Error: " . $conn->error;
     }
 }
-?>

@@ -3,13 +3,11 @@ session_start();
 include '../service/koneksi.php';
 include '../helper/authAdmin.php';
 
-// ---  TAMBAH LAYANAN (CREATE) ---
 if (isset($_POST['simpan_layanan'])) {
     $nama      = $_POST['nama_layanan'];
     $harga     = $_POST['harga'];
     $deskripsi = $_POST['deskripsi'];
 
-    // Default aktif = 1 (True)
     $sql = "INSERT INTO layanan (nama_layanan, deskripsi, harga, aktif) VALUES ('$nama', '$deskripsi', '$harga', 1)";
 
     if ($conn->query($sql)) {
@@ -20,7 +18,6 @@ if (isset($_POST['simpan_layanan'])) {
     }
 }
 
-// --- LOGIKA 2: HAPUS LAYANAN (DELETE) ---
 if (isset($_GET['hapus'])) {
     $id = $_GET['hapus'];
     $conn->query("DELETE FROM layanan WHERE id='$id'");
@@ -39,7 +36,6 @@ if (isset($_GET['hapus'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <style>
-        /* Layout Grid Khusus Halaman Ini */
         .admin-grid {
             display: grid;
             grid-template-columns: 1fr 2fr;

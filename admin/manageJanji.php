@@ -3,21 +3,18 @@ session_start();
 include '../service/koneksi.php';
 include '../helper/authAdmin.php';
 
-// 1. LOGIKA UPDATE STATUS (Terima/Tolak/Selesai)
 if (isset($_GET['aksi']) && isset($_GET['id'])) {
     $id_janji = $_GET['id'];
-    $status_baru = $_GET['aksi']; // pending, dibayar, selesai, batal
+    $status_baru = $_GET['aksi'];
 
     $conn->query("UPDATE janji SET status='$status_baru' WHERE id='$id_janji'");
 
-    // Redirect kembali agar URL bersih (tetap bawa filter layanan jika ada)
     $redirect_url = "manageJanji.php";
     if (isset($_GET['layanan_id'])) $redirect_url .= "?layanan_id=" . $_GET['layanan_id'];
     header("Location: " . $redirect_url);
     exit;
 }
 
-// 2. LOGIKA FILTER LAYANAN
 $whereClause = "";
 $judulHalaman = "Semua Data Janji Temu";
 
@@ -25,14 +22,12 @@ if (isset($_GET['layanan_id'])) {
     $layanan_id = $_GET['layanan_id'];
     $whereClause = "WHERE janji.layanan_id = '$layanan_id'";
 
-    // Ambil nama layanan untuk judul
     $cekLayanan = $conn->query("SELECT nama_layanan FROM layanan WHERE id='$layanan_id'")->fetch_assoc();
     if ($cekLayanan) {
         $judulHalaman = "Data Pasien: " . $cekLayanan['nama_layanan'];
     }
 }
 
-// 3. QUERY DATA (JOIN TABEL JANJI, USER, & LAYANAN)
 $sql = "SELECT janji.*, user.username, layanan.nama_layanan 
         FROM janji 
         JOIN user ON janji.user_id = user.id 
@@ -131,13 +126,11 @@ $result = $conn->query($sql);
                         if ($result->num_rows > 0) {
                             $no = 1;
                             while ($row = $result->fetch_assoc()) {
-                                // Warna Badge
                                 $bg = 'bg-pending';
                                 if ($row['status'] == 'selesai') $bg = 'bg-selesai';
                                 if ($row['status'] == 'batal') $bg = 'bg-batal';
                                 if ($row['status'] == 'dibayar') $bg = 'bg-dibayar';
 
-                                // Pertahankan layanan_id di URL saat klik aksi
                                 $linkFilter = isset($_GET['layanan_id']) ? "&layanan_id=" . $_GET['layanan_id'] : "";
                         ?>
                                 <tr>

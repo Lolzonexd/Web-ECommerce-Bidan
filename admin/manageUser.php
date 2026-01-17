@@ -2,20 +2,17 @@
 session_start();
 include '../service/koneksi.php';
 
-// Cek Auth Admin (Manual atau pakai helper)
 if (!isset($_SESSION['loggedin']) || $_SESSION['level'] !== 'admin') {
     header("location: login.php");
     exit;
 }
 
-// --- LOGIKA 1: TAMBAH USER BARU ---
 if (isset($_POST['tambah_user'])) {
     $username = mysqli_real_escape_string($conn, $_POST['username']);
     $email    = mysqli_real_escape_string($conn, $_POST['email']);
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash Password!
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $level    = $_POST['level'];
 
-    // Cek apakah email sudah ada?
     $cekEmail = $conn->query("SELECT id FROM user WHERE email = '$email'");
     if ($cekEmail->num_rows > 0) {
         $error = "Email sudah terdaftar!";
@@ -30,15 +27,13 @@ if (isset($_POST['tambah_user'])) {
     }
 }
 
-// --- LOGIKA 2: HAPUS USER ---
 if (isset($_GET['hapus'])) {
     $id = $_GET['hapus'];
-    // Cegah admin menghapus dirinya sendiri
     if ($id == $_SESSION['id']) {
         echo "<script>alert('Anda tidak bisa menghapus akun sendiri!'); window.location='manageUser.php';</script>";
         exit;
     }
-    
+
     $conn->query("DELETE FROM user WHERE id='$id'");
     header("Location: manageUser.php?status=hapus");
     exit;
@@ -47,27 +42,62 @@ if (isset($_GET['hapus'])) {
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <title>Kelola User - Admin</title>
     <link rel="stylesheet" href="../asset/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Layout Grid: Kiri Form, Kanan Tabel */
-        .admin-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 30px; }
-        @media (max-width: 768px) { .admin-grid { grid-template-columns: 1fr; } }
-        
-        .btn-action { padding: 6px 10px; border-radius: 5px; color: white; margin-right: 5px; font-size: 0.8rem; }
-        .btn-edit { background: #f39c12; }
-        .btn-del { background: #e74c3c; }
-        
-        /* Badge Level */
-        .badge { padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; color: white; }
-        .badge-admin { background: #e74c3c; }
-        .badge-user { background: #3498db; }
-        .badge-bidan { background: #2ecc71; }
+        .admin-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .admin-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .btn-action {
+            padding: 6px 10px;
+            border-radius: 5px;
+            color: white;
+            margin-right: 5px;
+            font-size: 0.8rem;
+        }
+
+        .btn-edit {
+            background: #f39c12;
+        }
+
+        .btn-del {
+            background: #e74c3c;
+        }
+
+        .badge {
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: white;
+        }
+
+        .badge-admin {
+            background: #e74c3c;
+        }
+
+        .badge-user {
+            background: #3498db;
+        }
+
+        .badge-bidan {
+            background: #2ecc71;
+        }
     </style>
 </head>
+
 <body>
 
     <nav class="navbar-dashboard">
@@ -76,21 +106,21 @@ if (isset($_GET['hapus'])) {
     </nav>
 
     <div class="dashboard-container">
-        
-        <?php if(isset($_GET['status']) && $_GET['status']=='sukses'): ?>
+
+        <?php if (isset($_GET['status']) && $_GET['status'] == 'sukses'): ?>
             <div style="background:#d4edda; color:#155724; padding:15px; border-radius:10px; margin-bottom:20px;">
                 <i class="fas fa-check"></i> Berhasil menambah user baru!
             </div>
         <?php endif; ?>
-        
-        <?php if(isset($error)): ?>
+
+        <?php if (isset($error)): ?>
             <div style="background:#f8d7da; color:#721c24; padding:15px; border-radius:10px; margin-bottom:20px;">
                 <i class="fas fa-exclamation-triangle"></i> <?= $error ?>
             </div>
         <?php endif; ?>
 
         <div class="admin-grid">
-            
+
             <div class="card-box">
                 <h3 class="card-title"><i class="fas fa-user-plus"></i> Tambah User Baru</h3>
                 <form method="POST">
@@ -132,32 +162,30 @@ if (isset($_GET['hapus'])) {
                         </thead>
                         <tbody>
                             <?php
-                            // Ambil ID Admin yang sedang login (Cek 'id' atau 'user_id')
                             $my_id = $_SESSION['id'] ?? $_SESSION['user_id'];
 
                             $result = $conn->query("SELECT * FROM user ORDER BY id DESC");
                             $no = 1;
-                            while($row = $result->fetch_assoc()):
-                                // Warna Badge Level
+                            while ($row = $result->fetch_assoc()):
                                 $badgeClass = 'badge-user';
-                                if($row['level'] == 'admin') $badgeClass = 'badge-admin';
-                                if($row['level'] == 'bidan') $badgeClass = 'badge-bidan';
+                                if ($row['level'] == 'admin') $badgeClass = 'badge-admin';
+                                if ($row['level'] == 'bidan') $badgeClass = 'badge-bidan';
                             ?>
-                            <tr>
-                                <td><?= $no++ ?></td>
-                                <td>
-                                    <strong><?= htmlspecialchars($row['username']) ?></strong><br>
-                                    <small style="color:#888;"><?= htmlspecialchars($row['email']) ?></small>
-                                </td>
-                                <td><span class="badge <?= $badgeClass ?>"><?= ucfirst($row['level']) ?></span></td>
-                                <td>
-                                    <a href="editUser.php?id=<?= $row['id'] ?>" class="btn-action btn-edit"><i class="fas fa-edit"></i></a>
-                                    
-                                    <?php if($row['id'] != $my_id): ?>
-                                        <a href="manageUser.php?hapus=<?= $row['id'] ?>" class="btn-action btn-del" onclick="return confirm('Yakin hapus user ini? Data biodata & janji terkait juga akan hilang!')"><i class="fas fa-trash"></i></a>
-                                    <?php endif; ?>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td><?= $no++ ?></td>
+                                    <td>
+                                        <strong><?= htmlspecialchars($row['username']) ?></strong><br>
+                                        <small style="color:#888;"><?= htmlspecialchars($row['email']) ?></small>
+                                    </td>
+                                    <td><span class="badge <?= $badgeClass ?>"><?= ucfirst($row['level']) ?></span></td>
+                                    <td>
+                                        <a href="editUser.php?id=<?= $row['id'] ?>" class="btn-action btn-edit"><i class="fas fa-edit"></i></a>
+
+                                        <?php if ($row['id'] != $my_id): ?>
+                                            <a href="manageUser.php?hapus=<?= $row['id'] ?>" class="btn-action btn-del" onclick="return confirm('Yakin hapus user ini? Data biodata & janji terkait juga akan hilang!')"><i class="fas fa-trash"></i></a>
+                                        <?php endif; ?>
+                                    </td>
+                                </tr>
                             <?php endwhile; ?>
                         </tbody>
                     </table>
@@ -166,7 +194,8 @@ if (isset($_GET['hapus'])) {
 
         </div>
     </div>
-    
+
     <?php include '../layout/footer.html'; ?>
 </body>
+
 </html>

@@ -28,17 +28,17 @@ $result = $conn->query($sql);
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 
     <style>
-        /* TEMA SAGE GREEN & CREAM (Sesuai Dashboard User) */
         body {
-            background-color: #fdfbf5; /* Cream Lembut */
+            background-color: #fdfbf5;
+            /* Cream Lembut */
             font-family: 'Poppins', sans-serif;
         }
 
-        /* Override Navbar agar konsisten Hijau Sage */
         .navbar-dashboard {
             background-color: #6b9080;
         }
-        .navbar-dashboard .brand, 
+
+        .navbar-dashboard .brand,
         .navbar-dashboard .user-greeting,
         .navbar-dashboard .btn-logout-nav {
             color: white !important;
@@ -57,7 +57,8 @@ $result = $conn->query($sql);
         }
 
         .custom-table th {
-            background-color: #6b9080; /* Hijau Sage */
+            background-color: #6b9080;
+            /* Hijau Sage */
             color: white;
             padding: 15px;
             text-align: left;
@@ -83,10 +84,27 @@ $result = $conn->query($sql);
             font-weight: 600;
             display: inline-block;
         }
-        .bg-pending { background-color: #fff3cd; color: #856404; }
-        .bg-dibayar { background-color: #d1ecf1; color: #0c5460; }
-        .bg-selesai { background-color: #e8f5e9; color: #2e7d32; } /* Hijau Sukses */
-        .bg-batal { background-color: #f8d7da; color: #721c24; }
+
+        .bg-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .bg-dibayar {
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .bg-selesai {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        /* Hijau Sukses */
+        .bg-batal {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
 
         /* Tombol Lihat Hasil */
         .btn-hasil {
@@ -103,6 +121,7 @@ $result = $conn->query($sql);
             gap: 5px;
             border: 1px solid #6b9080;
         }
+
         .btn-hasil:hover {
             background-color: white;
             color: #6b9080;
@@ -143,7 +162,8 @@ $result = $conn->query($sql);
                         <th>Layanan</th>
                         <th>Jadwal</th>
                         <th>Status</th>
-                        <th>Aksi</th> </tr>
+                        <th>Aksi</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <?php
@@ -151,7 +171,7 @@ $result = $conn->query($sql);
                         $no = 1;
                         while ($row = $result->fetch_assoc()) {
                             $status = $row['status'];
-                            
+
                             // Logika Warna Status
                             $statusClass = 'bg-pending';
                             if ($status == 'dibayar') $statusClass = 'bg-dibayar';
@@ -205,4 +225,5 @@ $result = $conn->query($sql);
 
     <?php include '../layout/footer.html'; ?>
 </body>
+
 </html>

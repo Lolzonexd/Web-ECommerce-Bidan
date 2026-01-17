@@ -44,8 +44,8 @@ if ($result->num_rows !== 1) {
 $userData = $result->fetch_assoc();
 
 $userName = $userData['nama_lengkap']
-          ?: $userData['username']
-          ?: 'Pengguna';
+    ?: $userData['username']
+    ?: 'Pengguna';
 
 $email = $userData['email'];
 $userId = $userData['id'];
