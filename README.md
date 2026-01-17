@@ -86,7 +86,7 @@ Repo ini berisi source code untuk proyek UAS mata kuliah pemrograman web, yaitu 
 - Manajemen akun
 - Dashboard statistik singkat
 
-## 📸 Preview (Opsional)
+## 📸 Preview
 
 _(Tambahkan screenshot di sini nanti)_
 
