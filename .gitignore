@@ -4,3 +4,14 @@
 
 # Payment
 /config/*
+
+# Config
+/error_log
+/admin/error_log
+/page/error_log
+/public/error_log
+/public/service
+/service/error_log
+
+# Databse Dump
+/database/*

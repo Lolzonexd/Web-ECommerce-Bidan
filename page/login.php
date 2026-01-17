@@ -49,6 +49,10 @@ include '../helper/redirectIfLoggedIn.php';
                 echo "<div class='alert alert-error'>" . htmlspecialchars($_SESSION['login_error']) . "</div>";
                 unset($_SESSION['login_error']);
             }
+            if (isset($_SESSION['reset_success'])) {
+                echo "<div class='alert alert-success'>" . htmlspecialchars($_SESSION['reset_success']) . "</div>";
+                unset($_SESSION['reset_success']);
+            }
             ?>
 
             <form action="../service/proseslogin.php" method="POST">
@@ -62,12 +66,13 @@ include '../helper/redirectIfLoggedIn.php';
                     <input type="password" id="password" name="password" class="form-control" placeholder="Masukkan password" required>
                 </div>
 
-                <div class="remember-me-wrap">
+                <div class="remember-me-wrap" style="display:flex; justify-content:space-between; align-items:center;">
                     <label class="custom-checkbox">
                         <b>Ingat Saya</b>
                         <input type="checkbox" name="remember" id="remember">
                         <span class="checkmark"></span>
                     </label>
+                    <a href="lupaPassword.php" style="font-size:0.9rem; color:#6b9080; text-decoration:none;">Lupa Password?</a>
                 </div>
 
                 <button type="submit" class="btn-submit">Login</button>

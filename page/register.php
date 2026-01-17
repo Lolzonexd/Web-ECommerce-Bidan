@@ -47,7 +47,7 @@ include '../helper/redirectIfLoggedIn.php';
             }
             ?>
 
-            <form action="../service/prosesRegister.php" method="POST">
+            <form action="../service/prosesregister.php" method="POST">
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" class="form-control" placeholder="Pilih username" required>

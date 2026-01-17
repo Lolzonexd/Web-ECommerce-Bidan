@@ -5,12 +5,12 @@ include '../helper/authUser.php';
 
 $user_id = $_SESSION['user_id'] ?? $_SESSION['id'];
 
-// Query Join: Mengambil data janji + nama layanan dari tabel layanan
+// Ambil data janji
 $sql = "SELECT janji.*, layanan.nama_layanan, layanan.harga 
         FROM janji 
         JOIN layanan ON janji.layanan_id = layanan.id 
         WHERE janji.user_id = '$user_id' 
-        ORDER BY janji.created_at DESC";
+        ORDER BY janji.tanggal DESC, janji.jam DESC";
 
 $result = $conn->query($sql);
 ?>
@@ -28,61 +28,84 @@ $result = $conn->query($sql);
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 
     <style>
-        /* CSS Tambahan Khusus Tabel */
-        .table-responsive {
-            overflow-x: auto;
+        /* TEMA SAGE GREEN & CREAM (Sesuai Dashboard User) */
+        body {
+            background-color: #fdfbf5; /* Cream Lembut */
+            font-family: 'Poppins', sans-serif;
         }
 
+        /* Override Navbar agar konsisten Hijau Sage */
+        .navbar-dashboard {
+            background-color: #6b9080;
+        }
+        .navbar-dashboard .brand, 
+        .navbar-dashboard .user-greeting,
+        .navbar-dashboard .btn-logout-nav {
+            color: white !important;
+            border-color: white !important;
+        }
+
+        /* Tabel & Card */
         .custom-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 10px;
             background: white;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-
-        .custom-table th,
-        .custom-table td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #eee;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
 
         .custom-table th {
-            background-color: var(--primary);
+            background-color: #6b9080; /* Hijau Sage */
             color: white;
+            padding: 15px;
+            text-align: left;
             font-weight: 600;
+        }
+
+        .custom-table td {
+            padding: 15px;
+            border-bottom: 1px solid #f0f0f0;
+            color: #555;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            border-radius: 12px;
         }
 
         /* Badge Status */
         .badge {
             padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
             font-weight: 600;
             display: inline-block;
         }
+        .bg-pending { background-color: #fff3cd; color: #856404; }
+        .bg-dibayar { background-color: #d1ecf1; color: #0c5460; }
+        .bg-selesai { background-color: #e8f5e9; color: #2e7d32; } /* Hijau Sukses */
+        .bg-batal { background-color: #f8d7da; color: #721c24; }
 
-        .bg-pending {
-            background-color: #fff3cd;
-            color: #856404;
+        /* Tombol Lihat Hasil */
+        .btn-hasil {
+            background-color: #6b9080;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            border: 1px solid #6b9080;
         }
-
-        .bg-dibayar {
-            background-color: #d1ecf1;
-            color: #0c5460;
-        }
-
-        .bg-selesai {
-            background-color: #d4edda;
-            color: #155724;
-        }
-
-        .bg-batal {
-            background-color: #f8d7da;
-            color: #721c24;
+        .btn-hasil:hover {
+            background-color: white;
+            color: #6b9080;
         }
     </style>
 </head>
@@ -95,21 +118,21 @@ $result = $conn->query($sql);
         </a>
         <div class="nav-right">
             <span class="user-greeting">Halo, <b><?php echo htmlspecialchars($_SESSION['username']); ?></b></span>
-            <a href="dashboardUser.php" class="btn-logout-nav" style="background:transparent; border:1px solid white;">Kembali</a>
+            <a href="dashboardUser.php" class="btn-logout-nav">Kembali</a>
         </div>
     </nav>
 
     <div class="dashboard-container">
 
         <?php if (isset($_GET['status']) && $_GET['status'] == 'success'): ?>
-            <div style="background: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px; border-left: 5px solid #28a745;">
-                <i class="fas fa-check-circle"></i> Booking berhasil dibuat! Silakan tunggu konfirmasi atau lakukan pembayaran.
+            <div style="background: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                <i class="fas fa-check-circle"></i> Pembayaran berhasil!
             </div>
         <?php endif; ?>
 
-        <div class="welcome-banner" style="background: white; border-left: 5px solid var(--primary); box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
-            <h2 style="margin: 0; font-size: 1.5rem; color: #333;">Riwayat Kunjungan & Booking</h2>
-            <p style="margin: 5px 0 0; color: #666;">Daftar semua janji temu yang pernah Anda buat.</p>
+        <div class="welcome-banner" style="background: white; border-left: 5px solid #6b9080; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+            <h2 style="margin: 0; font-family: 'Playfair Display', serif; color: #6b9080;">Riwayat Kunjungan</h2>
+            <p style="margin: 5px 0 0; color: #777;">Pantau status janji temu dan hasil pemeriksaan kesehatan Anda.</p>
         </div>
 
         <div class="table-responsive">
@@ -119,35 +142,49 @@ $result = $conn->query($sql);
                         <th>No</th>
                         <th>Layanan</th>
                         <th>Jadwal</th>
-                        <th>Estimasi Harga</th>
                         <th>Status</th>
-                    </tr>
+                        <th>Aksi</th> </tr>
                 </thead>
                 <tbody>
                     <?php
                     if ($result && $result->num_rows > 0) {
                         $no = 1;
                         while ($row = $result->fetch_assoc()) {
+                            $status = $row['status'];
+                            
                             // Logika Warna Status
                             $statusClass = 'bg-pending';
-                            if ($row['status'] == 'dibayar') $statusClass = 'bg-dibayar';
-                            if ($row['status'] == 'selesai') $statusClass = 'bg-selesai';
-                            if ($row['status'] == 'batal') $statusClass = 'bg-batal';
+                            if ($status == 'dibayar') $statusClass = 'bg-dibayar';
+                            if ($status == 'selesai') $statusClass = 'bg-selesai';
+                            if ($status == 'batal') $statusClass = 'bg-batal';
                     ?>
                             <tr>
                                 <td><?php echo $no++; ?></td>
                                 <td>
-                                    <strong><?php echo htmlspecialchars($row['nama_layanan']); ?></strong>
+                                    <strong style="color:#333;"><?php echo htmlspecialchars($row['nama_layanan']); ?></strong>
+                                    <div style="font-size:0.85rem; color:#888;">Rp <?php echo number_format($row['harga'], 0, ',', '.'); ?></div>
                                 </td>
                                 <td>
-                                    <i class="far fa-calendar-alt"></i> <?php echo date('d M Y', strtotime($row['tanggal'])); ?> <br>
-                                    <i class="far fa-clock"></i> <?php echo date('H:i', strtotime($row['jam'])); ?> WIB
+                                    <div><i class="far fa-calendar-alt"></i> <?php echo date('d M Y', strtotime($row['tanggal'])); ?></div>
+                                    <div style="font-size:0.85rem; margin-top:3px;"><i class="far fa-clock"></i> <?php echo date('H:i', strtotime($row['jam'])); ?> WIB</div>
                                 </td>
-                                <td>Rp <?php echo number_format($row['harga'], 0, ',', '.'); ?></td>
                                 <td>
                                     <span class="badge <?php echo $statusClass; ?>">
-                                        <?php echo ucfirst($row['status']); ?>
+                                        <?php echo ucfirst($status); ?>
                                     </span>
+                                </td>
+                                <td>
+                                    <?php if ($status == 'selesai') { ?>
+                                        <a href="detailPemeriksaan.php?id=<?= $row['id'] ?>" class="btn-hasil">
+                                            <i class="fas fa-file-medical"></i> Lihat Hasil
+                                        </a>
+                                    <?php } else if ($status == 'pending') { ?>
+                                        <a href="payment.php?id=<?= $row['id'] ?>" style="color:#e67e22; text-decoration:none; font-size:0.9rem; font-weight:600;">
+                                            <i class="fas fa-wallet"></i> Bayar
+                                        </a>
+                                    <?php } else { ?>
+                                        <span style="color:#ccc;">-</span>
+                                    <?php } ?>
                                 </td>
                             </tr>
                         <?php
@@ -155,9 +192,8 @@ $result = $conn->query($sql);
                     } else {
                         ?>
                         <tr>
-                            <td colspan="5" style="text-align:center; padding: 40px; color: #777;">
-                                <i class="fas fa-inbox" style="font-size: 3rem; margin-bottom: 10px; opacity: 0.5;"></i><br>
-                                Belum ada riwayat booking.
+                            <td colspan="5" style="text-align:center; padding: 40px; color: #999;">
+                                Belum ada riwayat kunjungan.
                             </td>
                         </tr>
                     <?php } ?>
@@ -169,5 +205,4 @@ $result = $conn->query($sql);
 
     <?php include '../layout/footer.html'; ?>
 </body>
-
 </html>

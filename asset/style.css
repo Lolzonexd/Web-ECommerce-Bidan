@@ -700,3 +700,93 @@ footer {
 .custom-table tr:hover {
     background-color: #f9f9f9;
 }
+/* Container Tabel agar melengkung dan ada bayangan */
+.table-wrapper {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden; /* Supaya sudut tabel ikut melengkung */
+    margin-top: 20px;
+}
+
+/* Gaya Tabel Utama */
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+}
+
+.styled-table thead tr {
+    background-color: #009879; /* Warna Hijau Medis */
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th, 
+.styled-table td {
+    padding: 15px 20px;
+}
+
+/* Garis pemisah antar baris */
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+/* Zebra Striping (Warna selang-seling) */
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+/* Efek Hover saat mouse lewat */
+.styled-table tbody tr:hover {
+    background-color: #eaf6f4;
+    cursor: default;
+}
+
+/* Terakhir tidak perlu garis bawah */
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+/* --- BADGE STATUS (Kapsul Warna) --- */
+.badge {
+    padding: 6px 12px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.badge-dibayar {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+.badge-pending {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+/* --- TOMBOL PERIKSA (Modern Button) --- */
+.btn-periksa {
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe); /* Gradasi Ungu/Biru */
+    color: white;
+    padding: 8px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 6px rgba(108, 92, 231, 0.2);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-periksa:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(108, 92, 231, 0.3);
+}
+
+.btn-periksa i {
+    margin-right: 5px;
+}

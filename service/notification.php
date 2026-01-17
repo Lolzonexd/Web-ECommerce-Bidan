@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__FILE__) . '/../config/midtrans_config.php';
+require_once dirname(__FILE__) . '/../service/midtrans_config.php';
 include '../service/koneksi.php';
 
 try {
@@ -54,8 +54,10 @@ if ($cek_data->num_rows > 0) {
     } elseif ($status_transaksi == 'batal') {
         $conn->query("UPDATE janji SET status = 'batal' WHERE id = '$id_janji'");
     }
-
+    
     echo "OK, Status Updated to $status_transaksi";
+
 } else {
     echo "Order ID Not Found";
 }
+?>

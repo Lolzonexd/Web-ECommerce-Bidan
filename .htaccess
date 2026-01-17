@@ -1,0 +1,6 @@
+# Directory Listing = OFF
+Options -Indexes
+DirectoryIndex index.php index.html
+
+# Redirect
+ErrorDocument 403 /403.php
